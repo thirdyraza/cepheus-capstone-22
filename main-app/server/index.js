@@ -44,6 +44,38 @@ app.post('/api/login', async (req, res) => {
         return res.json({ status: 'fail', user : false})
     }
 })
+
+// getting info for home using db
+app.get('/api/home', async (req, res) => {
+
+    const token = req.headers['x-access-token']
+    try{
+        const decoded = jwt.verify(token, '21975232')
+        const idnum = decoded.idnum
+        const user = await User.findOne({ idnum:idnum })
+
+        return res.json({ status: 'success', dept: user.dept})
+    }catch(err){
+        console.log(error)
+        res.json({ status: 'error', error: 'invalid token'})
+    }
+})
+
+app.post('/api/home', async (req, res) => {
+
+    const token = req.headers['x-access-token']
+    try{
+        const decoded = jwt.verify(token, '21975232')
+        const idnum = decoded.idnum
+        await User.updateOne({ idnum:idnum },
+            {$set: { dept: req.body.dept}})
+        return { status: 'success'}
+    }catch(err){
+        console.log(error)
+        res.json({ status: 'error', error: 'invalid token'})
+    }
+})
+
 app.listen(2301, () => {
     console.log('server is running on 2301');
 })

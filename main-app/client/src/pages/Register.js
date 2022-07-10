@@ -6,6 +6,7 @@ function App() {
   const [lname, setLName] = useState('')
   const [idnum, setIDNum] = useState('')
   const [pass, setPass] = useState('')
+  const [dept, setDept] = useState('')
   const navigate = useNavigate()
 
   async function registerUser(event){
@@ -18,6 +19,7 @@ function App() {
       body: JSON.stringify({
         fname,
         lname,
+        dept,
         idnum,
         pass,
       }),
@@ -46,6 +48,12 @@ function App() {
         placeholder="Last Name" />
         <br />
         <input
+        value = {dept}
+        onChange = {(e) => setDept(e.target.value)}
+        type="text"
+        placeholder="Department" />
+        <br />
+        <input
         value = {idnum}
         onChange = {(e) => setIDNum(e.target.value)}
         type="text"
@@ -56,7 +64,7 @@ function App() {
         onChange = {(e) => setPass(e.target.value)}
         type="password"
         placeholder="Password" />
-        <br />
+        <br />        
         <input type="submit" value="Register" />
       </form>
     </div>

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function App() {
   const [idnum, setIDNum] = useState('')
@@ -21,6 +21,7 @@ function App() {
 
     const data = await response.json()
     if(data.user){
+      localStorage.setItem('token', data.user)
       navigate('/home')
     }else{
       alert('Wrong credentials')
