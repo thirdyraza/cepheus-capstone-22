@@ -8,7 +8,7 @@ function App() {
   const [pass, setPass] = useState('')
   const navigate = useNavigate()
 
-  // checking for user authenticity
+  // user authentication
   async function loginUser(event){
     event.preventDefault()
     const response = await fetch('http://localhost:2301/api/login', {
@@ -31,7 +31,7 @@ function App() {
     }
     console.log(data)
   }
-  
+
   return (
     <body>
       <div class="logo">
