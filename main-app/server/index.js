@@ -4,6 +4,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const User = require('./models/users.model')
 const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
 
 // middlewares
 app.use(cors())
@@ -11,15 +12,17 @@ app.use(express.json())
 
 mongoose.connect('mongodb://localhost:27017/mern-stack-yt')
 
-// register function using db
+// REGISTER function using db
 app.post('/api/register', async (req, res) => {
     console.log(req.body)
     try{
+        const encryptPass = await bcrypt.hash(req.body.pass, 10)
         await User.create({
             fname: req.body.fname,
             lname: req.body.lname,
             idnum: req.body.idnum,
-            pass: req.body.pass,
+            pass: encryptPass,
+            dept: req.body.dept,
         })
         res.json({ status: 'success' })
     }catch (err){
@@ -27,14 +30,18 @@ app.post('/api/register', async (req, res) => {
     } 
 })
 
-// log in function using db
+// LOG IN function using db
 app.post('/api/login', async (req, res) => {
     const user = await User.findOne({
         idnum: req.body.idnum,
-        pass: req.body.pass,
     })
+    if(!user) {
+        return { status: 'error', error: 'Invalid Password'}
+    }
 
-    if(user){
+    const isPassValid = await bcrypt.compare(req.body.pass, user.pass)
+
+    if(isPassValid){
         const token = jwt.sign({
             idnum: user.idnum,
             pass: user.pass,
@@ -45,7 +52,7 @@ app.post('/api/login', async (req, res) => {
     }
 })
 
-// getting info for home using db
+// getting info for HOME using db
 app.get('/api/home', async (req, res) => {
 
     const token = req.headers['x-access-token']
@@ -69,7 +76,7 @@ app.post('/api/home', async (req, res) => {
         const idnum = decoded.idnum
         await User.updateOne({ idnum:idnum },
             {$set: { dept: req.body.dept}})
-        return { status: 'success'}
+        return res.json({ status: 'success'})
     }catch(err){
         console.log(error)
         res.json({ status: 'error', error: 'invalid token'})
