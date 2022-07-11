@@ -20,9 +20,11 @@ app.post('/api/register', async (req, res) => {
         await User.create({
             fname: req.body.fname,
             lname: req.body.lname,
+            midi: req.body.midi,
             idnum: req.body.idnum,
             pass: encryptPass,
             dept: req.body.dept,
+            org: req.body.org,
         })
         res.json({ status: 'success' })
     }catch (err){
@@ -61,7 +63,15 @@ app.get('/api/home', async (req, res) => {
         const idnum = decoded.idnum
         const user = await User.findOne({ idnum:idnum })
 
-        return res.json({ status: 'success', dept: user.dept})
+        return res.json({
+            status: 'success',
+            idnum: user.idnum,
+            fname: user.fname,
+            midi: user.midi,
+            lname: user.lname,
+            org: user.org,
+            dept: user.dept
+            })
     }catch(err){
         console.log(error)
         res.json({ status: 'error', error: 'invalid token'})

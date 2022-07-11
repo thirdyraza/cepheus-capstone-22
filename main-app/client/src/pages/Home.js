@@ -4,8 +4,13 @@ import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
     const navigate = useNavigate()
+    const [fname, setFName] = useState('')
+    const [lname, setLName] = useState('')
+    const [idnum, setIDNum] = useState('')
+    const [midi, setMidI] = useState('')
     const [dept, setDept] = useState('')
-    const [tempDept, setTempDept] = useState('')
+    const [org, setOrg] = useState('')
+
 
     async function populateData(){
         const req = await fetch('http://localhost:2301/api/home', {
@@ -15,6 +20,11 @@ const Home = () => {
         })
         const data = await req.json()
         if(data.status === 'success'){
+            setIDNum(data.idnum)
+            setFName(data.fname)
+            setMidI(data.midi)
+            setLName(data.lname)
+            setOrg(data.org)
             setDept(data.dept)
         }else {
             alert(data.error)
@@ -35,39 +45,14 @@ const Home = () => {
         }
     })
 
-    // update function
-    async function updateDept(event) {        
-        event.preventDefault()
-        const req = await fetch('http://localhost:2301/api/home', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'x-access-token': localStorage.getItem('token'),
-            },
-            body: JSON.stringify({
-                dept: tempDept,
-            }),
-        })
-        const data = await req.json()
-        if(data.status === 'success'){            
-            setTempDept(data.dept) 
-            setDept(data.dept)
-                                   
-        }else {
-            alert(data.error)
-        }
-    }
-
     return(
         <div>
-            <h1> department: {dept || 'No department found'} </h1>
-            <form onSubmit={updateDept}>
-                <input type= "text"
-                placeholder="Department"
-                value={tempDept}
-                onChange = {e => setTempDept(e.target.value)} />
-                <input type="submit" value="Department update" />
-            </form>
+            <h1> department: {idnum || 'No ID Number found'} </h1>
+            <h1> department: {fname || 'No First Name found'} </h1>
+            <h1> department: {midi || 'No Middle Initial found'} </h1>
+            <h1> department: {lname || 'No Last Name found'} </h1>
+            <h1> department: {org || 'No Organization found'} </h1>
+            <h1> department: {dept || 'No Department found'} </h1>
         </div>
     )
 }

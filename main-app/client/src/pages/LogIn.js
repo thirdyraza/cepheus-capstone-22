@@ -29,24 +29,50 @@ function App() {
     console.log(data)
   }
   return (
-    <div>
-      <h1>Log In </h1>
-      <form onSubmit={loginUser}>
-        <input
-        value = {idnum}
-        onChange = {(e) => setIDNum(e.target.value)}
-        type="text"
-        placeholder="ID Number" />
-        <br />
-        <input
-        value = {pass}
-        onChange = {(e) => setPass(e.target.value)}
-        type="password"
-        placeholder="Password" />
-        <br />
-        <input type="submit" value="Log In" />
-      </form>
-    </div>
+    <body>
+      {/* <div class="logo">
+          <img src="../assets/images/logo.png" alt="" />
+      </div> */}
+
+      <div class="main">
+
+          <div class="login-container">
+              
+              <div class="login-wrap">
+                  <div class="branding">
+                      <h1>SIGN-IN</h1>
+                      <p> PLEASE ENTER YOUR CREDENTIALS</p>
+                  </div>
+                  <form onSubmit={loginUser}>                  
+                    <div class="inputs-cont">
+                        <div class="inputs">
+                            <label for="fname">User ID</label>
+                            <input
+                            value = {idnum}
+                            onChange = {(e) => setIDNum(e.target.value)}
+                            type="text"
+                            placeholder="ID Number" />
+                            <br />
+                        </div>
+            
+                        <div class="inputs">
+                            <label for="fname">Password</label>
+                            <input
+                            value = {pass}
+                            onChange = {(e) => setPass(e.target.value)}
+                            type="password"
+                            placeholder="Password" />
+                            <br />
+                        </div>
+                  </div>
+                  </form>
+                      <input type="submit" class="button" value="SIGN IN" />
+              </div>
+
+          </div>
+
+      </div>
+    </body>
   );
 }
 

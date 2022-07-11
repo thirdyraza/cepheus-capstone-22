@@ -5,7 +5,8 @@ const User = new mongoose.Schema ({
     lname: {type: String, required: true},
     idnum: {type: String, required: true, unique: true},
     pass: {type: String, required: true},
-    dept: {type: String},
+    dept: {type: String, required: true},
+    org: {type: String, required: true},
 },
 { collection: 'user-data' }
 )
