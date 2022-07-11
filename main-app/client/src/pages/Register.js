@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+import '../assets/scss/register.scss'
+import logo from '../assets/images/logo.png'
 
 function App() {
   const [fname, setFName] = useState('')
@@ -11,6 +13,7 @@ function App() {
   const [org, setOrg] = useState('')
   const navigate = useNavigate()
 
+  // inserting data through a route + setting what to insert
   async function registerUser(event){
     event.preventDefault()
     const response = await fetch('http://localhost:2301/api/register', {
@@ -38,87 +41,87 @@ function App() {
   return (
   <body>
     <div>
-      {/* <div class="logo">
-          <img src="../assets/images/logo.png" alt="" />
-      </div> */}
-      <div>
-          <div class="register-container">
-              <div class="wrap">
-                  <div class="branding">
+      <div class="logo">
+          <img src={logo} alt="" />
+      </div>
+      <div class="main-reg">
+          <div class="reg-container">
+            <div class="reg-wrap">
+                  <div class="reg-branding">
                       <h1>ACCOUNT</h1>
                       <h1>REGISTRATION</h1>
                       <p> PLEASE ENTER USER CREDENTIALS</p>
                   </div>
                   <form onSubmit={registerUser}>
-                    <div class="inputs-cont">
-                        <div class="inputs">
-                            <label for="idnum">Id Number</label>                        
+                    <div class="reg-inputs-cont">
+                        <div class="reg-inputs">
+                            <label for="idnum">ID Number</label>                        
                             <input
                             id='idnum' name="IDNum"
                             value = {idnum}
                             onChange = {(e) => setIDNum(e.target.value)}
                             type="text"
-                            placeholder="ID Number" />
+                            placeholder="Enter ID Number" />
                             <br />
                         </div>
-                        <div class="inputs">
+                        <div class="reg-inputs">
                             <label for="pass">Password</label>
                             <input
                             id='pass' name="Pass"
                             value = {pass}
                             onChange = {(e) => setPass(e.target.value)}
                             type="password"
-                            placeholder="Password" />
+                            placeholder="Enter Password" />
                             <br />
                         </div>
-                        <div class="inputs">
+                        <div class="reg-inputs">
                             <label for="fname" >First Name</label>
                             <input
                             id="fname" name="FName"
                             value = {fname}
                             onChange = {(e) => setFName(e.target.value)}
                             type="text"
-                            placeholder="First Name" />
+                            placeholder="Enter First Name" />
                             <br />
                         </div>
-                        <div class="inputs">
-                            <label for="lname">Last Name</label>
-                            <input
-                            id="lname" name="LName"
-                            value = {lname}
-                            onChange = {(e) => setLName(e.target.value)}
-                            type="text"
-                            placeholder="Last Name" />
-                            <br />
-                        </div>
-                        <div class="inputs">
+                        <div class="reg-inputs">
                             <label for="MI">Middle Initial</label>
                             <input
                             id="midi" name="MiddleInitial"
                             value = {midi}
                             onChange = {(e) => setMidI(e.target.value)}
                             type="text"
-                            placeholder="Middle Initial" />
+                            placeholder="Enter Middle Initial" />
                             <br />
                         </div>
-                        <div class="inputs">
+                        <div class="reg-inputs">
+                            <label for="lname">Last Name</label>
+                            <input
+                            id="lname" name="LName"
+                            value = {lname}
+                            onChange = {(e) => setLName(e.target.value)}
+                            type="text"
+                            placeholder="Enter Last Name" />
+                            <br />
+                        </div>                        
+                        <div class="reg-inputs">
                             <label for="Dept">Department</label>
                             <input
                             id="dept" name="Department"
                             value = {dept}
                             onChange = {(e) => setDept(e.target.value)}
                             type="text"
-                            placeholder="Department" />
+                            placeholder="Enter Department" />
                             <br />
                         </div>
-                        <div class="inputs">
+                        <div class="reg-inputs">
                             <label for="Org">Organization</label>
                             <input
                             id="org" name="Organization"
                             value = {org}
                             onChange = {(e) => setOrg(e.target.value)}
                             type="text"
-                            placeholder="Organization" />
+                            placeholder="Enter Organization" />
                             <br />
                         </div>
 
@@ -153,16 +156,10 @@ function App() {
                           </div> */}
 
                     </div>
-
-                    <div class="buttons">
-                      <input type="submit" class="button" value="REGISTER"/>                                    
-                      <div class="button" onclick="clear()">
-                          <p>CANCEL</p>
-                      </div>
-                    </div>
+                      <input type="submit" class="reg-button" value="REGISTER"/>
                   </form>
 
-              </div>
+            </div>
           </div>
 
       </div>

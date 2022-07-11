@@ -10,6 +10,7 @@ const bcrypt = require('bcryptjs')
 app.use(cors())
 app.use(express.json())
 
+// mongodb connection
 mongoose.connect('mongodb://localhost:27017/mern-stack-yt')
 
 // REGISTER function using db
@@ -78,21 +79,7 @@ app.get('/api/home', async (req, res) => {
     }
 })
 
-app.post('/api/home', async (req, res) => {
-
-    const token = req.headers['x-access-token']
-    try{
-        const decoded = jwt.verify(token, '21975232')
-        const idnum = decoded.idnum
-        await User.updateOne({ idnum:idnum },
-            {$set: { dept: req.body.dept}})
-        return res.json({ status: 'success'})
-    }catch(err){
-        console.log(error)
-        res.json({ status: 'error', error: 'invalid token'})
-    }
-})
-
+// establishing PORT + testing
 app.listen(2301, () => {
     console.log('server is running on 2301');
 })

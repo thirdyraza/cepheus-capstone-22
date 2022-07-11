@@ -11,7 +11,7 @@ const Home = () => {
     const [dept, setDept] = useState('')
     const [org, setOrg] = useState('')
 
-
+    // fetching data through a route + setting what to fetch
     async function populateData(){
         const req = await fetch('http://localhost:2301/api/home', {
             headers: {
@@ -47,12 +47,12 @@ const Home = () => {
 
     return(
         <div>
-            <h1> department: {idnum || 'No ID Number found'} </h1>
-            <h1> department: {fname || 'No First Name found'} </h1>
-            <h1> department: {midi || 'No Middle Initial found'} </h1>
-            <h1> department: {lname || 'No Last Name found'} </h1>
-            <h1> department: {org || 'No Organization found'} </h1>
-            <h1> department: {dept || 'No Department found'} </h1>
+            <h1> ID Number: {idnum || 'No ID Number found'} </h1>
+            <h1> First Name: {fname || 'No First Name found'} </h1>
+            <h1> Middle Initial: {midi || 'No Middle Initial found'} </h1>
+            <h1> Last Name: {lname || 'No Last Name found'} </h1>
+            <h1> Organization: {org || 'No Organization found'} </h1>
+            <h1> Department: {dept || 'No Department found'} </h1>
         </div>
     )
 }
