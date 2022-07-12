@@ -24,6 +24,7 @@ function App() {
       body: JSON.stringify({
         fname,
         lname,
+        midi,
         dept,
         org,
         idnum,
