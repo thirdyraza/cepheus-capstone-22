@@ -36,7 +36,9 @@ function App() {
 
     if(data.status === 'success'){
       navigate('/login')
-    }
+    } else{
+      alert(data.error)
+    };
   }
 
   return (
