@@ -11,7 +11,7 @@ function App() {
   // user authentication
   async function loginUser(event){
     event.preventDefault()
-    const response = await fetch('http://localhost:2301/api/login', {
+    const response = await fetch('http://localhost:2302/api/login', {
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',

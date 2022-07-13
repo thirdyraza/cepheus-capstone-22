@@ -13,7 +13,7 @@ const Home = () => {
 
     // fetching data through a route + setting what to fetch
     async function populateData(){
-        const req = await fetch('http://localhost:2301/api/home', {
+        const req = await fetch('http://localhost:2302/api/home', {
             headers: {
                 'x-access-token': localStorage.getItem('token'),
             },

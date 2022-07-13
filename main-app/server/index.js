@@ -80,6 +80,6 @@ app.get('/api/home', async (req, res) => {
 })
 
 // establishing PORT + testing
-app.listen(2301, () => {
-    console.log('server is running on 2301');
+app.listen(2302, () => {
+    console.log('server is running');
 })

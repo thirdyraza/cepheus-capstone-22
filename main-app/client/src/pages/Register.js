@@ -16,7 +16,7 @@ function App() {
   // inserting data through a route + setting what to insert
   async function registerUser(event){
     event.preventDefault()
-    const response = await fetch('http://localhost:2301/api/register', {
+    const response = await fetch('http://localhost:2302/api/register', {
       method: 'POST',
       headers:{
         'Content-Type': 'application/json',
