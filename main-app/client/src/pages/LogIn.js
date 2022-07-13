@@ -23,13 +23,16 @@ function App() {
     })
 
     const data = await response.json()
-    if(data.user){
-      localStorage.setItem('token', data.user)
-      navigate('/register')
+    if(data.status === 'success'){ // user id is existing
+      if(data.user){ // user credentials correct
+        localStorage.setItem('token', data.user)
+        navigate('/register')
+      }else{
+        alert(data.error)
+      }
     }else{
-      alert('Wrong credentials')
-    }
-    console.log(data)
+      alert(data.error)
+    } 
   }
 
   return (
@@ -42,7 +45,7 @@ function App() {
           <div class="login-wrap">
             <div class="branding">
               <h1>SIGN-IN</h1>
-              <p> PLEASE ENTER YOUR CREDENTIALS</p>
+              <p>PLEASE ENTER YOUR CREDENTIALS</p>
             </div>
             <form onSubmit={loginUser}>                  
               <div class="inputs-cont">

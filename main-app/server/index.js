@@ -15,10 +15,14 @@ mongoose.connect('mongodb://127.0.0.1:27017/mern-stack-yt')
 
 // REGISTER function using db
 app.post('/api/register', async (req, res) => {
-    console.log(req.body)
+
     try{
-        const encryptPass = await bcrypt.hash(req.body.pass, 10)
-        await User.create({
+        const matchID = await User.findOne({ // finding for ID matches
+            idnum: req.body.idnum
+        })
+        if (!matchID){
+            const encryptPass = await bcrypt.hash(req.body.pass, 10)
+            await User.create({
             fname: req.body.fname,
             lname: req.body.lname,
             midi: req.body.midi,
@@ -26,10 +30,13 @@ app.post('/api/register', async (req, res) => {
             pass: encryptPass,
             dept: req.body.dept,
             org: req.body.org,
-        })
+            })
         res.json({ status: 'success' })
+        } else{
+            res.json({status: 'error', error: 'ID Number already taken'})
+        }
     }catch (err){
-        res.json({status: 'error', error: 'ID Number is already taken'})
+        res.json({status: 'error', error: 'Form not complete'})
     } 
 })
 
@@ -38,21 +45,24 @@ app.post('/api/login', async (req, res) => {
     const user = await User.findOne({
         idnum: req.body.idnum,
     })
-    if(!user) {
-        return { status: 'error', error: 'Invalid Password'}
-    }
 
-    const isPassValid = await bcrypt.compare(req.body.pass, user.pass)
+    if(user) {
+        const isPassValid = await bcrypt.compare(req.body.pass, user.pass)
 
-    if(isPassValid){
-        const token = jwt.sign({
-            idnum: user.idnum,
-            pass: user.pass,
-        }, '21975232')
-        return res.json({ status: 'success', user : token})
-    } else {
-        return res.json({ status: 'fail', user : false})
+        if(isPassValid){
+            const token = jwt.sign({
+                idnum: user.idnum,
+                pass: user.pass,
+            }, '21975232')
+            res.json({ status: 'success', user : token})
+        } else {
+            res.json({ status: 'error', user : false, error: 'Password incorrect!'})
+        }
+    } else{
+        res.json({status: 'error', error: 'User not found!'})
+        return
     }
+    
 })
 
 // getting info for HOME using db
