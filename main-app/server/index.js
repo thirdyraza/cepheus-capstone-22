@@ -11,7 +11,7 @@ app.use(cors())
 app.use(express.json())
 
 // mongodb connection
-mongoose.connect('mongodb://localhost:27017/mern-stack-yt')
+mongoose.connect('mongodb://127.0.0.1:27017/mern-stack-yt')
 
 // REGISTER function using db
 app.post('/api/register', async (req, res) => {
