@@ -24,6 +24,7 @@ function App() {
       body: JSON.stringify({
         fname,
         lname,
+        midi,
         dept,
         org,
         idnum,
@@ -35,7 +36,9 @@ function App() {
 
     if(data.status === 'success'){
       navigate('/login')
-    }
+    } else{
+      alert(data.error)
+    };
   }
 
   return (
