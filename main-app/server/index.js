@@ -20,7 +20,7 @@ app.post('/api/register', async (req, res) => {
         const matchID = await User.findOne({ // finding for ID matches
             idnum: req.body.idnum
         })
-        if (!matchID){
+        if (!matchID){ // no matches found
             const encryptPass = await bcrypt.hash(req.body.pass, 10)
             await User.create({
             fname: req.body.fname,
@@ -91,5 +91,5 @@ app.get('/api/home', async (req, res) => {
 
 // establishing PORT + testing
 app.listen(2301, () => {
-    console.log('server is running on 2301');
+    console.log('server is running');
 })
