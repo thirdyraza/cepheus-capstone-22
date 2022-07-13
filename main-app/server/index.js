@@ -79,6 +79,8 @@ app.get('/api/home', async (req, res) => {
     }
 })
 
+console.log(mongoose.connection.readyState);
+
 // establishing PORT + testing
 app.listen(2301, () => {
     console.log('server is running on 2301');
