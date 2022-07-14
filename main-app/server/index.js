@@ -93,6 +93,7 @@ app.get('/api/home', async (req, res) => {
             status: 'success',
             idnum: user.idnum,
             fname: user.fname,
+            role:user.role,
             midi: user.midi,
             lname: user.lname,
             org: user.org,

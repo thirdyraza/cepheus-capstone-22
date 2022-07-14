@@ -9,6 +9,8 @@ function App() {
   const [idnum, setIDNum] = useState('')
   const [midi, setMidI] = useState('')
   const [pass, setPass] = useState('')
+  const [role, setRole] = useState('')
+  const [cpass, setCPass] = useState('')
   const [dept, setDept] = useState('')
   const [org, setOrg] = useState('')
   const navigate = useNavigate()
@@ -29,16 +31,21 @@ function App() {
         org,
         idnum,
         pass,
+        role
       }),
     })
-
+        
     const data = await response.json()
-
-    if(data.status === 'success'){
-      navigate('/login')
-    } else{
-      alert(data.error)
-    };
+    if(pass === cpass){
+      if(data.status === 'success'){
+        navigate('/login')
+      } else{
+        alert(data.error)
+      }
+    } else {
+      return alert('Password do not match')
+    }
+    
   }
 
   return (
@@ -78,6 +85,29 @@ function App() {
                             <br />
                         </div>
                         <div class="reg-inputs">
+                            <label for="pass">Confirm Password</label>
+                            <input
+                            id='pass' name="Pass"
+                            value = {cpass}
+                            onChange = {(e) => setCPass(e.target.value)}
+                            type="password"
+                            placeholder="Enter Password" />
+                            <br />
+                        </div>
+                        <div class="reg-inputs">
+                            <label for="Role">Role</label>
+                            <select
+                            id="role" name="Role"
+                            value = {role}
+                            onChange = {(e) => setRole(e.target.value)}
+                            type="text">
+                              <option>- - -</option>
+                              <option>Faculty</option>
+                              <option>Student</option>
+                            </select>
+                            <br />
+                        </div>
+                        <div class="reg-inputs">
                             <label for="fname" >First Name</label>
                             <input
                             id="fname" name="FName"
@@ -94,7 +124,9 @@ function App() {
                             value = {midi}
                             onChange = {(e) => setMidI(e.target.value)}
                             type="text"
-                            placeholder="Enter Middle Initial" />
+                            placeholder="Enter Middle Initial"
+                            maxLength={2}
+                            />
                             <br />
                         </div>
                         <div class="reg-inputs">
@@ -106,27 +138,45 @@ function App() {
                             type="text"
                             placeholder="Enter Last Name" />
                             <br />
-                        </div>                        
+                        </div>       
+                        <div className='reg-select'>           
                         <div class="reg-inputs">
                             <label for="Dept">Department</label>
-                            <input
+                            <select
                             id="dept" name="Department"
                             value = {dept}
                             onChange = {(e) => setDept(e.target.value)}
                             type="text"
-                            placeholder="Enter Department" />
+                            placeholder="Enter Department">
+                              <option>- - -</option>
+                              <option>SEAITE</option>
+                              <option>SEASH</option>
+                              <option>SHAS</option>
+                              <option>SABH</option>
+                            </select>
                             <br />
                         </div>
                         <div class="reg-inputs">
                             <label for="Org">Organization</label>
+                            <select id="org" name="Organization"
+                            onChange = {(e) => setOrg(e.target.value)}
+                            type="text"
+                            placeholder="Enter Organization">
+                              <option>- - -</option>
+                              <option>LITES</option>
+                              <option>SSC</option>
+                              <option>TLC</option>
+                            </select>
+                            {/*
                             <input
                             id="org" name="Organization"
                             value = {org}
                             onChange = {(e) => setOrg(e.target.value)}
                             type="text"
                             placeholder="Enter Organization" />
-                            <br />
+                            <br />*/}
                         </div>
+                        </div>   
 
                         {/* <div class="dropdowns">
                             <label for="Org">Organization</label>
