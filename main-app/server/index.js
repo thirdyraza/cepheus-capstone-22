@@ -20,30 +20,36 @@ app.post('/api/register', async (req, res) => {
         const matchID = await User.findOne({ // finding for ID matches
             idnum: req.body.idnum
         })
+        
         if (!matchID){ // no matches found
-            const idn = req.body.idnum
-            if(!isNaN(idn)){ // ID is only integers
-                if (idn.length === 5  || idn.length != 8){ // ID 5 to 7 digits only
-                    const encryptPass = await bcrypt.hash(req.body.pass, 10)
-                    await User.create({
-                        fname: req.body.fname,
-                        lname: req.body.lname,
-                        midi: req.body.midi,
-                        idnum: req.body.idnum,
-                        pass: encryptPass,
-                        dept: req.body.dept,
-                        org: req.body.org,
-                    })
-                    res.json({ status: 'success' })
-                } else {
-                    res.json({status: 'error', error: 'ID Number must be at least 5 digits / should not exceed 7'})
-                }
-            } else {
-                res.json({status: 'error', error: 'ID Number must only be numbers'})
-            }
+            var idn = req.body.idnum
         } else {
-            res.json({status: 'error', error: 'ID Number already taken'})
+             return res.json({status: 'error', error: 'ID Number already taken'})
         }
+
+        if(!isNaN(idn)){ // ID is only integers
+            var purenum = idn
+        } else {
+            return res.json({status: 'error', error: 'ID Number must only be numbers'})
+        }
+
+        if (purenum.length >= 5  && purenum.length < 8){ // ID 5 to 7 digits only
+            const encryptPass = await bcrypt.hash(req.body.pass, 10)
+            await User.create({
+                fname: req.body.fname,
+                lname: req.body.lname,
+                midi: req.body.midi,
+                idnum: req.body.idnum,
+                pass: encryptPass,
+                dept: req.body.dept,
+                org: req.body.org,
+                cpass: req.body.org,
+            })
+            res.json({ status: 'success' })
+        } else {
+            return res.json({status: 'error', error: 'ID Number must be at least 5 digits / should not exceed 7'})
+        }
+
     }catch (err){
         res.json({status: 'error', error: 'Form not complete'})
     } 
