@@ -89,3 +89,51 @@ body{
     cursor: pointer;
 }
 
+#dept{
+    border: 0px solid;
+    border:  2px rgba(34, 34, 34, 0.308) solid;
+    border-radius: 100px;
+    padding: 15px 30px;
+    color: rgba(34, 34, 34, 0.596);
+    font-size: 14px; 
+}
+
+// Andrei Version
+.reg_container{
+    border-radius: 2em;
+    height: 100%;
+    width: 650px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.reg_container label{
+    color: black;
+}
+
+.reg_container input{
+    padding: 15px;
+    margin: 10px;
+    border-radius: 50px;
+    border: gray solid 1px;
+}
+
+.formInput{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+
+.formInput label{
+    margin-left: 20px;
+}
+
+.regform_title h1{
+    padding: 0;
+    marign:0;
+    font-weight: bolder;
+    text-align: center;
+}

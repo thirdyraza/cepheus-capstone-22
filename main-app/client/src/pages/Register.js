@@ -109,13 +109,21 @@ function App() {
                         </div>                        
                         <div class="reg-inputs">
                             <label for="Dept">Department</label>
-                            <input
-                            id="dept" name="Department"
-                            value = {dept}
-                            onChange = {(e) => setDept(e.target.value)}
+                            <select id="dept" name="Department"
+                            value={dept}
+                            onChange={(e) => setDept(e.target.value)}
                             type="text"
-                            placeholder="Enter Department" />
-                            <br />
+                            placeholder="Enter Department">
+                                  <option value="SEAITE">SEAITE</option>
+                                  <option value="SABH">SABH</option>
+                                  <option value="SHAS">SHAS</option>
+                                  <option value="SEAS">SEAS</option>
+                                  <option value="SHS">SHS</option>
+                                  <option value="JHS">JHS</option>
+                                  <option value="Elementary">Elementary</option>
+                                  <option value="Faculty">Faculty</option>
+                                  <option value="Others">Others</option>
+                            </select>
                         </div>
                         <div class="reg-inputs">
                             <label for="Org">Organization</label>
