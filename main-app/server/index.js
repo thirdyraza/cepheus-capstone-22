@@ -24,30 +24,47 @@ app.post('/api/register', async (req, res) => {
         if (!matchID){ // no matches found
             var idn = req.body.idnum
         } else {
-             return res.json({status: 'error', error: 'ID Number already taken'})
+            res.json({status: 'error', error: 'ID Number already taken'})
         }
 
         if(!isNaN(idn)){ // ID is only integers
             var purenum = idn
         } else {
-            return res.json({status: 'error', error: 'ID Number must only be numbers'})
+            res.json({status: 'error', error: 'ID Number must only be numbers'})
         }
 
         if (purenum.length >= 5  && purenum.length < 8){ // ID 5 to 7 digits only
-            const encryptPass = await bcrypt.hash(req.body.pass, 10)
-            await User.create({
-                fname: req.body.fname,
-                lname: req.body.lname,
-                midi: req.body.midi,
-                idnum: req.body.idnum,
-                pass: encryptPass,
-                dept: req.body.dept,
-                org: req.body.org,
-                cpass: req.body.org,
-            })
-            res.json({ status: 'success' })
+            var chkID = true
+            var firstN = req.body.fname
+            var midIn = req.body.midi
+            var LastN = req.body.lname
         } else {
-            return res.json({status: 'error', error: 'ID Number must be at least 5 digits / should not exceed 7'})
+            res.json({status: 'error', error: 'ID Number must be at least 5 digits / should not exceed 7'})
+        }
+
+        if (chkID && isNaN(firstN)){
+            if(isNaN(midIn)){
+                if(isNaN(LastN)){
+                    const encryptPass = await bcrypt.hash(req.body.pass, 10)
+                    await User.create({
+                        fname: req.body.fname,
+                        lname: req.body.lname,
+                        midi: req.body.midi,
+                        role: req.body.role,
+                        idnum: req.body.idnum,
+                        pass: encryptPass,
+                        dept: req.body.dept,
+                        org: req.body.org,                
+                    })
+                    res.json({ status: 'success' })
+                } else {
+                    res.json({status: 'error', error: 'Last Name cannot contain numbers'})
+                }
+            } else {
+                res.json({status: 'error', error: 'Middle Initial cannot contain numbers'})
+            }
+        } else {
+            res.json({status: 'error', error: 'First Name cannot contain numbers'})
         }
 
     }catch (err){
@@ -100,7 +117,6 @@ app.get('/api/home', async (req, res) => {
             dept: user.dept
             })
     }catch(err){
-        console.log(error)
         res.json({ status: 'error', error: 'invalid token'})
     }
 })

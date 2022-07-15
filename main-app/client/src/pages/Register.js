@@ -4,6 +4,7 @@ import '../assets/scss/register.scss'
 import logo from '../assets/images/logo.png'
 
 function App() {
+  // declaring all data to be caught in the form
   const [fname, setFName] = useState('')
   const [lname, setLName] = useState('')
   const [idnum, setIDNum] = useState('')
@@ -13,32 +14,58 @@ function App() {
   const [cpass, setCPass] = useState('')
   const [dept, setDept] = useState('')
   const [org, setOrg] = useState('')
+
+  const SEAITE = [ "- - -", "PICE", "IIEE", "LITES", "UAPSA", "JIEEP", "LTL", "SSC", "CCA", "LUSC" ]
+  const SABH = [ "- - -", "HOST", "JFINEX", "JPIA", "JMAH", "LTL", "SSC", "CCA", "LUSC" ]
+  const SEAS = [ "- - -", "LIFE", "JAPS", "PSS", "CRIM", "LTL", "SSC", "CCA", "LUSC" ]
+  const SHAS = [ "- - -", "LPSO", "LNSO", "LMTO", "LTL", "SSC", "CCA", "LUSC" ]
+
   const navigate = useNavigate()
+  const changeSelectOptionHandler = (event) => {
+    setDept(event.target.value);
+  }
+
+  let underDept = null
+  let orgs = null
+
+  if (dept === 'SEAITE') {
+    underDept = SEAITE
+  } else if (dept === 'SABH') {
+    underDept = SABH
+  } else if (dept === 'SEAS') {
+    underDept = SEAS
+  } else if (dept === 'SHAS') {
+    underDept = SHAS
+  }
+
+  if(underDept){
+    orgs = underDept.map((e) => <option key={e}>{e}</option>)
+  }
 
   // inserting data through a route + setting what to insert
   async function registerUser(event){
     event.preventDefault()
-    const response = await fetch('http://localhost:2301/api/register', {
-      method: 'POST',
-      headers:{
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        fname,
-        lname,
-        midi,
-        dept,
-        org,
-        idnum,
-        pass,
-        role
-      }),
-    })
-        
-    const data = await response.json()
+    
     if(pass === cpass){
+      const response = await fetch('http://localhost:2301/api/register', {
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fname,
+          lname,
+          midi,
+          dept,
+          org,
+          idnum,
+          pass,
+          role
+        }),
+      })
+      const data = await response.json()
       if(data.status === 'success'){
-        navigate('/login')
+        navigate('/')
       } else{
         alert(data.error)
       }
@@ -71,9 +98,13 @@ function App() {
                             value = {idnum}
                             onChange = {(e) => setIDNum(e.target.value)}
                             type="text"
-                            placeholder="Enter ID Number" />
+                            placeholder="Enter ID Number"
+                            required
+                            onInvalid={e => e.target.setCustomValidity('Please enter ID Number')}
+                            onInput={e => e.target.setCustomValidity('')} />
                             <br />
                         </div>
+
                         <div class="reg-inputs">
                             <label for="pass">Password</label>
                             <input
@@ -81,7 +112,10 @@ function App() {
                             value = {pass}
                             onChange = {(e) => setPass(e.target.value)}
                             type="password"
-                            placeholder="Enter Password" />
+                            placeholder="Enter Password"
+                            required                            
+                            onInvalid={e => e.target.setCustomValidity('Please enter Password')}
+                            onInput={e => e.target.setCustomValidity('')} />
                             <br />
                         </div>
                         <div class="reg-inputs">
@@ -91,15 +125,20 @@ function App() {
                             value = {cpass}
                             onChange = {(e) => setCPass(e.target.value)}
                             type="password"
-                            placeholder="Enter Password" />
+                            placeholder="Re-type Password"
+                            required
+                            onInvalid={e => e.target.setCustomValidity('Please re-type password')}
+                            onInput={e => e.target.setCustomValidity('')}  />
                             <br />
                         </div>
+
                         <div class="reg-inputs">
                             <label for="Role">Role</label>
                             <select
                             id="role" name="Role"
                             value = {role}
                             onChange = {(e) => setRole(e.target.value)}
+                            required
                             type="text">
                               <option>- - -</option>
                               <option>Faculty</option>
@@ -107,6 +146,7 @@ function App() {
                             </select>
                             <br />
                         </div>
+
                         <div class="reg-inputs">
                             <label for="fname" >First Name</label>
                             <input
@@ -114,7 +154,10 @@ function App() {
                             value = {fname}
                             onChange = {(e) => setFName(e.target.value)}
                             type="text"
-                            placeholder="Enter First Name" />
+                            placeholder="Enter First Name"
+                            required
+                            onInvalid={e => e.target.setCustomValidity('Please enter First Name')}
+                            onInput={e => e.target.setCustomValidity('')}  />
                             <br />
                         </div>
                         <div class="reg-inputs">
@@ -136,77 +179,42 @@ function App() {
                             value = {lname}
                             onChange = {(e) => setLName(e.target.value)}
                             type="text"
-                            placeholder="Enter Last Name" />
-                            <br />
-                        </div>       
-                        <div className='reg-select'>           
-                        <div class="reg-inputs">
-                            <label for="Dept">Department</label>
-                            <select
-                            id="dept" name="Department"
-                            value = {dept}
-                            onChange = {(e) => setDept(e.target.value)}
-                            type="text"
-                            placeholder="Enter Department">
-                              <option>- - -</option>
-                              <option>SEAITE</option>
-                              <option>SEASH</option>
-                              <option>SHAS</option>
-                              <option>SABH</option>
-                            </select>
+                            placeholder="Enter Last Name"
+                            required
+                            onInvalid={e => e.target.setCustomValidity('Please enter Last Name')}
+                            onInput={e => e.target.setCustomValidity('')}  />
                             <br />
                         </div>
-                        <div class="reg-inputs">
-                            <label for="Org">Organization</label>
-                            <select id="org" name="Organization"
-                            onChange = {(e) => setOrg(e.target.value)}
-                            type="text"
-                            placeholder="Enter Organization">
-                              <option>- - -</option>
-                              <option>LITES</option>
-                              <option>SSC</option>
-                              <option>TLC</option>
-                            </select>
-                            {/*
-                            <input
-                            id="org" name="Organization"
-                            value = {org}
-                            onChange = {(e) => setOrg(e.target.value)}
-                            type="text"
-                            placeholder="Enter Organization" />
-                            <br />*/}
-                        </div>
-                        </div>   
 
-                        {/* <div class="dropdowns">
-                            <label for="Org">Organization</label>
-                            <select name="org" id="org">
-                                <option value="default">SELECT ORGANIZATION</option>
-                                <option value = {org="LITES"}
-                                onChange = {(e) => setOrg(e.target.value)}
-                                >LITES</option>
-                                <option value = {org="HOSTS"}
-                                onChange = {(e) => setOrg(e.target.value)}
-                                >PICE</option>
-                                <option value = {org="SSC"}
-                                onChange = {(e) => setOrg(e.target.value)}
-                                >SSC</option>
-                            </select>
-                            
-                            <label for="MI">Department</label>
-                            <select name="dept" id="dept">
-                            <option value="default">SELECT DEPARTMENT</option>
-                              <option value = {dept="SEAITE"}
-                              onChange = {(e) => setDept(e.target.value)}
-                              >SEAITE</option>
-                              <option value = {dept="SABH"}
-                              onChange = {(e) => setDept(e.target.value)}
-                              >SABH</option>
-                              <option value = {dept="SEAS"}
-                              onChange = {(e) => setDept(e.target.value)}
-                              >SEAS</option>
-                            </select>
-                          </div> */}
+                        <div className='reg-select'>           
+                          <div class="reg-inputs">
+                              <label for="Dept">Department</label>
+                              <select
+                              id="dept" name="Department"
+                              value = {dept}
+                              onChange={changeSelectOptionHandler}
+                              type="text"
+                              required
+                              placeholder="Enter Department">
+                                <option>- - -</option>
+                                <option>SEAITE</option>
+                                <option>SABH</option>
+                                <option>SEAS</option>
+                                <option>SHAS</option>
+                              </select>
+                              <br />
+                          </div>
+
+                          <div class="reg-inputs">
+                              <label for="Org">Organization</label>
+                              <select id="org" name="Organization"
+                              onChange = {(e) => setOrg(e.target.value)}
+                              type="text"
+                              placeholder="Enter Organization">
+                                {orgs}
+                              </select>
+                          </div>
+                        </div>  
 
                     </div>
                       <input type="submit" class="reg-button" value="REGISTER"/>

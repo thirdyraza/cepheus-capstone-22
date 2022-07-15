@@ -30,9 +30,9 @@ function App() {
       }else{
         alert(data.error)
       }
-    }else{
+    } else {
       alert(data.error)
-    } 
+    }
   }
 
   return (
@@ -50,12 +50,13 @@ function App() {
             <form onSubmit={loginUser}>                  
               <div class="inputs-cont">
                 <div class="login-inputs">
-                  <label for="fname">ID Number</label>
+                  <label for="idnumber">ID Number</label>
                   <input
                   value = {idnum}
                   onChange = {(e) => setIDNum(e.target.value)}
                   type="text"
-                  placeholder="Enter ID Number" />
+                  placeholder="Enter ID Number"
+                  required />
                   <br />
                 </div>
             
@@ -65,7 +66,8 @@ function App() {
                   value = {pass}
                   onChange = {(e) => setPass(e.target.value)}
                   type="password"
-                  placeholder="Enter Password" />
+                  placeholder="Enter Password"
+                  required />
                   <br />
                   <a href="/login">FORGOT PASSWORD?</a>
                 </div>                
