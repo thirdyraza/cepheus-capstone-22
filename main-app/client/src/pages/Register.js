@@ -113,6 +113,7 @@ function App() {
                             onChange = {(e) => setPass(e.target.value)}
                             type="password"
                             placeholder="Enter Password"
+                            min={6}
                             required                            
                             onInvalid={e => e.target.setCustomValidity('Please enter Password')}
                             onInput={e => e.target.setCustomValidity('')} />
