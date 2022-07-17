@@ -24,27 +24,33 @@ app.post('/api/register', async (req, res) => {
         if (!matchID){ // no matches found
             var idn = req.body.idnum
         } else {
-            res.json({status: 'error', error: 'ID Number already taken'})
+            return res.json({status: 'sameID'})
         }
 
         if(!isNaN(idn)){ // ID is only integers
             var purenum = idn
         } else {
-            res.json({status: 'error', error: 'ID Number must only be numbers'})
+            return res.json({status: 'unPure'})
         }
 
-        if (purenum.length >= 5  && purenum.length < 8){ // ID 5 to 7 digits only
-            var chkID = true
-            var firstN = req.body.fname
-            var midIn = req.body.midi
-            var LastN = req.body.lname
+        if (purenum.length >= 5){ // ID 5 to 7 digits only
+            if(purenum.length < 8){
+                var chkID = true
+                var firstN = req.body.fname
+                var midIn = req.body.midi
+                var LastN = req.body.lname
+            } else {
+                return res.json({status: 'less8'})
+            }
         } else {
-            res.json({status: 'error', error: 'ID Number must be at least 5 digits / should not exceed 7'})
+            return res.json({status: 'more5'})
         }
 
-        if (chkID && isNaN(firstN)){
-            if(isNaN(midIn)){
-                if(isNaN(LastN)){
+        // checking for numbers in the names (first, last, middle)
+        var letters = /^[A-Za-z]+$/
+        if (chkID && firstN.match(letters)){
+            if(midIn.match(letters)){
+                if(LastN.match(letters)){
                     const encryptPass = await bcrypt.hash(req.body.pass, 10)
                     await User.create({
                         fname: req.body.fname,
@@ -56,19 +62,19 @@ app.post('/api/register', async (req, res) => {
                         dept: req.body.dept,
                         org: req.body.org,                
                     })
-                    res.json({ status: 'success' })
+                    return res.json({ status: 'success' })
                 } else {
-                    res.json({status: 'error', error: 'Last Name cannot contain numbers'})
+                    return res.json({status: 'errLname'})
                 }
             } else {
-                res.json({status: 'error', error: 'Middle Initial cannot contain numbers'})
+                return res.json({status: 'errMidi'})
             }
         } else {
-            res.json({status: 'error', error: 'First Name cannot contain numbers'})
+            return res.json({status: 'errFname'})
         }
 
     }catch (err){
-        res.json({status: 'error', error: 'Form not complete'})
+        return res.json({status: 'error', error: 'FORM NOT COMPLETE'})
     } 
 })
 
@@ -88,11 +94,10 @@ app.post('/api/login', async (req, res) => {
             }, '21975232')
             res.json({ status: 'success', user : token})
         } else {
-            res.json({ status: 'error', user : false, error: 'Password incorrect!'})
+            res.json({ status: 'invalPass'})
         }
     } else{
-        res.json({status: 'error', error: 'User not found!'})
-        return
+        res.json({status: 'unknownID'})
     }
     
 })

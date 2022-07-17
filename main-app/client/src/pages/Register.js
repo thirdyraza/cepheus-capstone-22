@@ -14,7 +14,6 @@ function App() {
   const [cpass, setCPass] = useState('')
   const [dept, setDept] = useState('')
   const [org, setOrg] = useState('')
-
   const SEAITE = [ "- - -", "PICE", "IIEE", "LITES", "UAPSA", "JIEEP", "LTL", "SSC", "CCA", "LUSC" ]
   const SABH = [ "- - -", "HOST", "JFINEX", "JPIA", "JMAH", "LTL", "SSC", "CCA", "LUSC" ]
   const SEAS = [ "- - -", "LIFE", "JAPS", "PSS", "CRIM", "LTL", "SSC", "CCA", "LUSC" ]
@@ -24,6 +23,18 @@ function App() {
   const changeSelectOptionHandler = (event) => {
     setDept(event.target.value);
   }
+
+  // setting up error catches
+  const [errFname, setErrFname] = useState('')
+  const [errLname, setErrLname] = useState('')
+  const [errIdnum, setErrIdnum] = useState('')
+  const [errMidi, setErrMidi] = useState('')
+  const [errPass, setErrPass] = useState('')
+  const [errRole, setErrRole] = useState('')
+  const [errCpass, setErrCpass] = useState('')
+  const [errDept, setErrDept] = useState('')
+  const [errOrg, setErrOrg] = useState('')
+  const [errForm, setErrForm] = useState('')
 
   let underDept = null
   let orgs = null
@@ -45,9 +56,17 @@ function App() {
   // inserting data through a route + setting what to insert
   async function registerUser(event){
     event.preventDefault()
-    
-    if(pass === cpass){
-      const response = await fetch('http://localhost:2301/api/register', {
+    setErrIdnum('')
+    setErrPass('')
+    setErrCpass('')
+    setErrRole('')
+    setErrFname('')
+    setErrMidi('')
+    setErrLname('')
+    setErrDept('')
+    setErrOrg('')
+    setErrForm('')
+    const response = await fetch('http://localhost:2301/api/register', {
         method: 'POST',
         headers:{
           'Content-Type': 'application/json',
@@ -64,13 +83,41 @@ function App() {
         }),
       })
       const data = await response.json()
-      if(data.status === 'success'){
-        navigate('/')
-      } else{
-        alert(data.error)
-      }
-    } else {
-      return alert('Password do not match')
+      if(data.status === 'sameID'){
+        setErrIdnum("ID Number is already taken")
+      }else if(data.status === 'unPure'){
+        setErrIdnum("ID Number must only be numbers")
+      }else if(data.status === 'more5'){
+        setErrIdnum("ID Number must be at least 5 digits")
+      }else if(data.status === 'less8'){
+        setErrIdnum("ID Number must be less than 8 digits")
+      }else if(pass === cpass){
+        setErrCpass('')
+        setErrPass('')
+        if(data.status === 'success'){
+          navigate('/')
+        }else if(data.status === 'errFname'){
+          setErrFname("First name should only contain letter")
+        }else if(data.status === 'errMidi'){
+          setErrMidi("Middle Initial should only contain letters")
+        }else if(data.status === 'errLname'){
+          setErrLname("Last name should only contain letters")
+        }else if(role === '- - -'){
+          setErrRole("Role cannot be empty")
+        }else if(underDept === null){
+          setErrDept("Department cannot be empty")
+        }else if(orgs === null){
+          setErrOrg("Organization cannot be empty")
+        }else{
+          setErrForm(data.error)
+        }
+    } else if (pass === ''){
+      setErrPass("Password cannot be empty")
+    } else if (cpass === ''){
+      setErrCpass("Please re-type your password")
+    } else{
+      setErrCpass("Password do not match")
+      setErrPass("Password do not match")
     }
     
   }
@@ -88,6 +135,7 @@ function App() {
                       <h1>ACCOUNT</h1>
                       <h1>REGISTRATION</h1>
                       <p> PLEASE ENTER USER CREDENTIALS</p>
+                      {errForm && <div className="form-error"> {errForm} </div>}
                   </div>
                   <form onSubmit={registerUser}>
                     <div class="reg-inputs-cont">
@@ -101,8 +149,10 @@ function App() {
                             placeholder="Enter ID Number"
                             required
                             onInvalid={e => e.target.setCustomValidity('Please enter ID Number')}
-                            onInput={e => e.target.setCustomValidity('')} />
+                            onInput={e => e.target.setCustomValidity('')}
+                            />
                             <br />
+                            {errIdnum && <div className="error"> {errIdnum} </div>}
                         </div>
 
                         <div class="reg-inputs">
@@ -118,19 +168,21 @@ function App() {
                             onInvalid={e => e.target.setCustomValidity('Please enter Password')}
                             onInput={e => e.target.setCustomValidity('')} />
                             <br />
+                            {errPass && <div className="error"> {errPass} </div>}
                         </div>
                         <div class="reg-inputs">
                             <label for="pass">Confirm Password</label>
                             <input
                             id='pass' name="Pass"
                             value = {cpass}
-                            onChange = {(e) => setCPass(e.target.value)}
+                            onChange = {(e) => setCPass(e.target.value)}                 
                             type="password"
                             placeholder="Re-type Password"
                             required
                             onInvalid={e => e.target.setCustomValidity('Please re-type password')}
                             onInput={e => e.target.setCustomValidity('')}  />
                             <br />
+                            {errCpass && <div className="error"> {errCpass} </div>}
                         </div>
 
                         <div class="reg-inputs">
@@ -146,6 +198,7 @@ function App() {
                               <option>Student</option>
                             </select>
                             <br />
+                            {errRole && <div className="error"> {errRole} </div>}
                         </div>
 
                         <div class="reg-inputs">
@@ -160,6 +213,7 @@ function App() {
                             onInvalid={e => e.target.setCustomValidity('Please enter First Name')}
                             onInput={e => e.target.setCustomValidity('')}  />
                             <br />
+                            {errFname && <div className="error"> {errFname} </div>}
                         </div>
                         <div class="reg-inputs">
                             <label for="MI">Middle Initial</label>
@@ -172,6 +226,7 @@ function App() {
                             maxLength={2}
                             />
                             <br />
+                            {errMidi && <div className="error"> {errMidi} </div>}
                         </div>
                         <div class="reg-inputs">
                             <label for="lname">Last Name</label>
@@ -185,6 +240,7 @@ function App() {
                             onInvalid={e => e.target.setCustomValidity('Please enter Last Name')}
                             onInput={e => e.target.setCustomValidity('')}  />
                             <br />
+                            {errLname && <div className="error"> {errLname} </div>}
                         </div>
 
                         <div className='reg-select'>           
@@ -204,6 +260,7 @@ function App() {
                                 <option>SHAS</option>
                               </select>
                               <br />
+                              {errDept && <div className="error"> {errDept} </div>}
                           </div>
 
                           <div class="reg-inputs">
@@ -214,11 +271,13 @@ function App() {
                               placeholder="Enter Organization">
                                 {orgs}
                               </select>
+                              {errOrg && <div className="error"> {errOrg} </div>}
                           </div>
                         </div>  
 
                     </div>
                       <input type="submit" class="reg-button" value="REGISTER"/>
+                      {errForm && <div className="form-error"> {errForm} </div>}
                   </form>
 
             </div>
