@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import '../assets/scss/register.scss'
 import logo from '../assets/images/logo.png'
+import AnchorBar from '../Components/AnchorBar';
 
 function App() {
   const [fname, setFName] = useState('')

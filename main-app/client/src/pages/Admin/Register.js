@@ -1,5 +1,6 @@
 import React from "react";
 import FormInput from "../../Components/FormInputs";
+import AnchorBar from "../../Components/AnchorBar";
 
 const RegisterAdmin = () => {
 
@@ -12,6 +13,7 @@ const RegisterAdmin = () => {
     }
 
     return(
+        <div>
         <div className="reg_container">
             <div className="regform_title">
                 <h1>ACCOUNT</h1>
@@ -27,6 +29,7 @@ const RegisterAdmin = () => {
                         <button className="reg-button">Submit</button>
                     </div>
                 </form>
+        </div>
         </div>
     )
 }
