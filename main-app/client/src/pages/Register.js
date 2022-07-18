@@ -66,7 +66,11 @@ function App() {
     setErrDept('')
     setErrOrg('')
     setErrForm('')
-    const response = await fetch('http://localhost:2301/api/register', {
+
+    if(pass === cpass){
+      setErrCpass('')
+      setErrPass('')
+      const response = await fetch('http://localhost:2301/api/register', {
         method: 'POST',
         headers:{
           'Content-Type': 'application/json',
@@ -83,6 +87,7 @@ function App() {
         }),
       })
       const data = await response.json()
+
       if(data.status === 'sameID'){
         setErrIdnum("ID Number is already taken")
       }else if(data.status === 'unPure'){
@@ -91,26 +96,24 @@ function App() {
         setErrIdnum("ID Number must be at least 5 digits")
       }else if(data.status === 'less8'){
         setErrIdnum("ID Number must be less than 8 digits")
-      }else if(pass === cpass){
-        setErrCpass('')
-        setErrPass('')
-        if(data.status === 'success'){
-          navigate('/')
-        }else if(data.status === 'errFname'){
-          setErrFname("First name should only contain letter")
-        }else if(data.status === 'errMidi'){
-          setErrMidi("Middle Initial should only contain letters")
-        }else if(data.status === 'errLname'){
-          setErrLname("Last name should only contain letters")
-        }else if(role === '- - -'){
-          setErrRole("Role cannot be empty")
-        }else if(underDept === null){
-          setErrDept("Department cannot be empty")
-        }else if(orgs === null){
-          setErrOrg("Organization cannot be empty")
-        }else{
-          setErrForm(data.error)
-        }
+      }else if(data.status === 'errFname'){
+        setErrFname("First name should only contain letter")
+      }else if(data.status === 'errMidi'){
+        setErrMidi("Middle Initial should only contain letters")
+      }else if(data.status === 'errLname'){
+        setErrLname("Last name should only contain letters")
+      }else if(role === '- - -'){
+        setErrRole("Role cannot be empty")
+      }else if(underDept === null){
+        setErrDept("Department cannot be empty")
+      }else if(orgs === null){
+        setErrOrg("Organization cannot be empty")
+      }else if(data.status === 'success'){
+        navigate('/')
+      }else{
+        setErrForm(data.error)
+        return
+      }
     } else if (pass === ''){
       setErrPass("Password cannot be empty")
     } else if (cpass === ''){
@@ -119,7 +122,6 @@ function App() {
       setErrCpass("Password do not match")
       setErrPass("Password do not match")
     }
-    
   }
 
   return (
