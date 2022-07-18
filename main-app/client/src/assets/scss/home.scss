@@ -1,0 +1,184 @@
+@import './var&mixins.scss';
+*{
+    z-index: 0;
+}
+.content-container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px 0;
+
+    p{
+        font-size: 30px;
+    }
+}
+
+.banner{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.458);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    z-index: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5vw;
+
+    p{
+        font-size: 50px;
+        font-weight: 700;
+        color: $color-white;
+        text-shadow: 1px 1px 10px rgba(77, 77, 77, 0.579);
+    }
+    .louisian{
+        font-size: 63px;
+        margin-top: -20px;
+        color: $color-yellow;
+    }
+}
+
+.main-cont{
+    margin-top: -70px;
+    margin-left: -50px;
+    width: 100%;
+    justify-content: end;
+    display: flex;
+    .mainbtn{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 60px;
+        width: 300px;
+        gap: 0 10px;
+        border-radius: 100px;
+        background-color: $color-blue;
+        
+        p{
+            color: $color-white;
+            font-size: 19px;
+            font-weight: 600;
+        }
+        svg{
+            fill: $color-white;
+            width: 30px;
+        }
+
+        &:hover{
+            background-color: $color-yellow;
+            cursor: pointer;
+        }
+    }
+}
+
+.circles{
+    display: flex;
+    justify-content: center;
+    gap: 0 10px;
+    margin-top: 20px;
+
+    .circle{
+        padding: 7px;
+        border-radius: 100px;
+        background-color: $color-blue;
+    }
+    #active{
+        background-color: $color-yellow;
+    }
+}
+
+.requests{
+    border-radius: 20px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.305);
+    margin-top: 50px;
+    min-height: 500px;
+    width: 100%;
+    background-color: $color-white;
+
+}
+
+.lvl2{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .nameCard{
+        margin-top: 50px;
+        border-radius: 20px;
+        height: 500px;
+        width: 450px;
+        background-color: $color-white;
+        box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.305);
+    }
+    .yourReqs{
+        border-radius: 20px;
+        box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.305);
+        margin-top: 50px;
+        background-color: $color-white;
+        min-height: 500px;
+        width: 900px;
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .main-cont{
+        
+        margin-left: -2vw;
+        margin-left: 0px;
+        margin-top: -60px;
+        justify-content: center;
+        .mainbtn{
+            height: 8vw;
+            width: 40vw;
+
+            p{
+                font-size: 2vw;
+            }
+            svg{
+                width: 3.5vw;
+            }
+        }
+    }
+
+    .circles{
+        gap: 1vw;
+        margin-top: 30px;
+
+        .circle{
+            padding: .9vw;
+        }
+    }
+
+    .banner{
+    
+        p{
+            font-size: 7vw;
+        }
+        .louisian{
+            font-size: 8vw;
+        }
+    }
+
+}
+
+// some responsiveness
+@media only screen and (max-width: 700px) {
+    .content-container{
+        width: 90%;
+        padding: 5vw 0;
+    }
+
+    .lvl2{
+        width: 100%;
+
+        .nameCard{
+            margin-top: 8vw;
+            width: 100%;
+        }
+        .yourReqs{  
+            margin-top: 8vw;
+        }
+    }
+}

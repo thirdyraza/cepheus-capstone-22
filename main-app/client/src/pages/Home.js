@@ -1,60 +1,49 @@
-import React, { useEffect, useState } from "react"
-import jwt from 'jsonwebtoken'
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
+import '../assets/scss/home.scss';
+import '../global.scss';
+import bg from '../assets/images/bannerpic1.jpg';
 
-const Home = () => {
-    const navigate = useNavigate()
-    const [fname, setFName] = useState('')
-    const [lname, setLName] = useState('')
-    const [idnum, setIDNum] = useState('')
-    const [midi, setMidI] = useState('')
-    const [dept, setDept] = useState('')
-    const [org, setOrg] = useState('')
 
-    // fetching data through a route + setting what to fetch
-    async function populateData(){
-        const req = await fetch('http://localhost:2301/api/home', {
-            headers: {
-                'x-access-token': localStorage.getItem('token'),
-            },
-        })
-        const data = await req.json()
-        if(data.status === 'success'){
-            setIDNum(data.idnum)
-            setFName(data.fname)
-            setMidI(data.midi)
-            setLName(data.lname)
-            setOrg(data.org)
-            setDept(data.dept)
-        }else {
-            alert(data.error)
-        }
-    }
+function Home() {
+  return (
+    <div class='content-container'>
+      
+      <div class='banner' style={{ backgroundImage: `url(${bg})` }}>
+        <p >WELCOME</p>
+        <p class='louisian'>LOUISIAN</p>
+      </div>
 
-    // verification of user token
-    useEffect(() => {
-        const token = localStorage.getItem('token')
-        if (token) {
-            const user = jwt.decode(token)
-            if (!user){
-                localStorage.removeItem('token')
-                navigate('/login')
-            } else{
-                populateData()
-            }
-        }
-    })
-
-    return(
-        <div>
-            <h1> ID Number: {idnum || 'No ID Number found'} </h1>
-            <h1> First Name: {fname || 'No First Name found'} </h1>
-            <h1> Middle Initial: {midi || 'No Middle Initial found'} </h1>
-            <h1> Last Name: {lname || 'No Last Name found'} </h1>
-            <h1> Organization: {org || 'No Organization found'} </h1>
-            <h1> Department: {dept || 'No Department found'} </h1>
+      <div class='circles'>
+        <div class='circle' id='active'></div>
+        <div class='circle'></div>
+        <div class='circle'></div>
+        <div class='circle'></div>
+      </div>
+      {/* main func button */}
+      <div class='main-cont'>
+        <div class='mainbtn' onClick>
+          <p>RESERVE FACILITY</p>
+          <svg class="icons" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM256 368C269.3 368 280 357.3 280 344V280H344C357.3 280 368 269.3 368 256C368 242.7 357.3 232 344 232H280V168C280 154.7 269.3 144 256 144C242.7 144 232 154.7 232 168V232H168C154.7 232 144 242.7 144 256C144 269.3 154.7 280 168 280H232V344C232 357.3 242.7 368 256 368z"/></svg>
         </div>
-    )
+      </div>
+
+      <div class='requests'>
+        
+      </div>
+
+      <div class='lvl2'>
+
+        <div class='yourReqs'>
+        
+        </div>
+
+        <div class='nameCard'>
+          
+        </div>
+
+      </div>
+    </div>
+  )
 }
 
 export default Home
