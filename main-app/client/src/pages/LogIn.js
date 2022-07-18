@@ -8,9 +8,15 @@ function App() {
   const [pass, setPass] = useState('')
   const navigate = useNavigate()
 
+  const [errIdnum, setErrIdnum] = useState('')
+  const [errPass, setErrPass] = useState('')
+  const [errForm, setErrForm] = useState('')
+
   // user authentication
   async function loginUser(event){
     event.preventDefault()
+    setErrIdnum('')
+    setErrPass('')
     const response = await fetch('http://localhost:2301/api/login', {
       method: 'POST',
       headers:{
@@ -27,12 +33,15 @@ function App() {
       if(data.user){ // user credentials correct
         localStorage.setItem('token', data.user)
         navigate('/register')
-      }else{
-        alert(data.error)
       }
-    }else{
-      alert(data.error)
-    } 
+    }else if(data.status === 'unknownID'){
+      setErrIdnum('User not Found')
+    }else if(data.status === 'invalPass'){
+      setErrPass('Incorrect Password')
+    }
+    else {
+      setErrForm('Please Enter Your Credentials')
+    }
   }
 
   return (
@@ -46,17 +55,22 @@ function App() {
             <div class="branding">
               <h1>SIGN-IN</h1>
               <p>PLEASE ENTER YOUR CREDENTIALS</p>
+              {errForm && <div className="form-error"> {errForm} </div>}              
             </div>
             <form onSubmit={loginUser}>                  
               <div class="inputs-cont">
                 <div class="login-inputs">
-                  <label for="fname">ID Number</label>
+                  <label for="idnumber">ID Number</label>
                   <input
                   value = {idnum}
                   onChange = {(e) => setIDNum(e.target.value)}
                   type="text"
-                  placeholder="Enter ID Number" />
+                  placeholder="Enter ID Number"
+                  required
+                  onInvalid={e => e.target.setCustomValidity('Please enter ID Number')}
+                  onInput={e => e.target.setCustomValidity('')} />
                   <br />
+                  {errIdnum && <div className="error"> {errIdnum} </div>}
                 </div>
             
                 <div class="login-inputs">
@@ -65,8 +79,12 @@ function App() {
                   value = {pass}
                   onChange = {(e) => setPass(e.target.value)}
                   type="password"
-                  placeholder="Enter Password" />
+                  placeholder="Enter Password"
+                  required
+                  onInvalid={e => e.target.setCustomValidity('Please enter Password')}
+                  onInput={e => e.target.setCustomValidity('')} />
                   <br />
+                  {errPass && <div className="error"> {errPass} </div>}
                   <a href="/login">FORGOT PASSWORD?</a>
                 </div>                
               </div>

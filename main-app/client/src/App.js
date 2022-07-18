@@ -1,19 +1,35 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoadingScreen from './Loading'
 import Login from './pages/LogIn'
 import Register from './pages/Register'
 import Home from './pages/Home'
 
-const App = () => {
-    return (<div>
+
+function App() {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3000)
+  }, [])
+
+  return (
+    <>
+    {loading === false ? (
+    <div>
         <BrowserRouter>
             <Routes>
-                <Route path='/login' element={ <Login/> }></Route>
+                <Route path='/' element={ <Login/> }></Route>
                 <Route path='/register' element={ <Register/> }></Route>
                 <Route path='/home' element={ <Home/> }></Route>
-            </Routes>            
+            </Routes>
         </BrowserRouter>
-    </div>)
+    </div>
+      ) : (
+        <LoadingScreen />
+      )}
+      </>
+  );
 }
 
 export default App
