@@ -1,7 +1,7 @@
 import React from "react";
 import '../assets/scss/building.scss'
 
-const BldgCard = () => {
+const BldgCard = (props) => {
 
     return(
         <div className="bldgcard-container">
