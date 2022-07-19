@@ -13,6 +13,7 @@ const RegisterAdmin = () => {
     }
 
     return(
+
         <div>
         <div className="reg_container">
             <div className="regform_title">
