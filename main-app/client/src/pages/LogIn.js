@@ -50,6 +50,21 @@ function App() {
         <img src={logo} alt="" />
       </div>
       <div class="main-login">
+        <div class="titling">
+              <div class="biglogo">
+                <img src={logo} alt="" />
+              </div>
+
+              <div class="texts">
+                  <div class="bigtext">
+                      <p>UNIVERSITY OF</p>
+                      <p class="saint">SAINT LOUIS</p>
+                  </div>
+                  <div class="smalltext">
+                      <p>Facility Reservation System</p>
+                  </div>
+              </div>
+          </div>
         <div class="login-container">
           <div class="login-wrap">
             <div class="branding">

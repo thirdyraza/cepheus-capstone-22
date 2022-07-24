@@ -59,6 +59,7 @@ app.post('/api/register', async (req, res) => {
                         role: req.body.role,
                         idnum: req.body.idnum,
                         pass: encryptPass,
+                        cpass: req.body.cpass,
                         dept: req.body.dept,
                         org: req.body.org,                
                     })
