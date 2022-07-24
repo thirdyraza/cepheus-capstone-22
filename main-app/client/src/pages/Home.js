@@ -33,20 +33,103 @@ function Home() {
         </div>
       </div>
 
+      {/* table */}
       <div class='requests'>
-        
+        <div className='request-title'>
+          <p>Approved Schedule</p>
+        </div>
+        <div class="table-container">
+          <div class="table">
+            <div class="table-header">
+              <div class="header__item"><a id="name" class="filter__link" href="#">Purpose</a></div>
+              <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Date</a></div>
+              <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Time</a></div>
+              <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Venue</a></div>
+            </div>
+            <div class="table-content">	
+              <div class="table-row">		
+                <div class="table-data">GDSC Seminar</div>
+                <div class="table-data">05-07-22</div>
+                <div class="table-data">3:00 pm - 4:30 pm</div>
+                <div class="table-data">Computer Lab J-48</div>
+              </div>
+              <div class="table-row">
+                <div class="table-data">LITES Competition</div>
+                <div class="table-data">05-03-22</div>
+                <div class="table-data">3:00 pm - 4:30 pm</div>
+                <div class="table-data">Friendship Park</div>
+              </div>
+              <div class="table-row">
+                <div class="table-data">Google Suites Seminar</div>
+                <div class="table-data">04-30-22</div>
+                <div class="table-data">3:00 pm - 4:30 pm</div>
+                <div class="table-data">Computer Lab J-46</div>
+              </div>
+              <div class="table-row">
+                <div class="table-data">GDSC Seminar</div>
+                <div class="table-data">05-07-22</div>
+                <div class="table-data">3:00 pm - 4:30 pm</div>
+                <div class="table-data">Computer Lab J-48</div>
+              </div>
+              <div class="table-row">
+                <div class="table-data">LITES Competition</div>
+                <div class="table-data">05-03-22</div>
+                <div class="table-data">3:00 pm - 4:30 pm</div>
+                <div class="table-data">Friendship Park</div>
+              </div>
+            </div>	
+          </div>
+            <button class="button" role="button">See more ...</button>
+        </div>
       </div>
 
       <div class='lvl2'>
 
+        {/* contacts */}
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'></link>
+
         <div class='yourReqs'>
-        
+            <h2>Let's work together.</h2>
+            <h3>Contact me for further queries or suggestions to improve our system. </h3>
+            <div class="contact">
+              <div class="contact-icon">
+                <i class='bx bxs-envelope' ></i>
+              </div>
+              <div class="contact-info">
+                <h3>TeamCepheus@usl.edu.ph</h3>
+                <h6>Responds within 1-2 days</h6>
+              </div>
+          </div>
+
+          <div class="contact">
+              <div class="contact-icon">
+                <i class='bx bxs-phone'></i>
+              </div>
+              <div class="contact-info">
+                <h3>+63 9230824660</h3>
+                <h6>Weekdays 7:00 AM to 7:00 PM,</h6>
+                <h6>Weekends 9:00 AM to 6:00 PM</h6>
+              </div>
+          </div>
+
         </div>
 
-        <div class='nameCard'>
-          
+        {/* Faqs */}
+        <div className='nameCard-container'>
+          <div class='nameCard'>
+            <div className='faq-header'>
+              <span>Q.</span>
+              <p>How to Schedule a Facility?</p>
+            </div>
+            <div className='faq-content'>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </div>
+          </div>
+          <div className='FAQS-button'>
+            <p>VIEW ALL FAQS</p>
+            <i class='bx bxs-message-square-detail' ></i>
+          </div>
         </div>
-
       </div>
     </div>
   )

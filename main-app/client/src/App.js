@@ -4,6 +4,8 @@ import LoadingScreen from './Loading'
 import Login from './pages/LogIn'
 import Register from './pages/Register'
 import Homepage from './pages/Homepage'
+import Buildings from './pages/Buildings'
+
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
                 <Route path='/' element={ <Login/> }></Route>                
                 <Route path='/homepage' element={ <Homepage/> }></Route>
                 <Route path='/homepage/register' element={ <Register/> }></Route>
+                <Route path='/buildings' element={ <Buildings/>}> </Route>
             </Routes>
         </BrowserRouter>
     </div>
