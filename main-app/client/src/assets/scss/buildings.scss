@@ -1,8 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+@import './var&mixins.scss';
 
-body{
-    background-color: aliceblue;
+*{
+    z-index: 0;
 }
+
+.bldgcontent-container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px 0;
+
+    p{
+        font-size: 30px;
+    }
+}
+.banner{
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.458);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    z-index: 0;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 5vw;
+
+    p{
+        font-size: 50px;
+        font-weight: 700;
+        color: $color-white;
+        text-shadow: 1px 1px 10px rgba(77, 77, 77, 0.579);
+    }
+    .louisian{
+        font-size: 63px;
+        margin-top: -20px;
+        color: $color-yellow;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
 
 // building card
 .bldgcard-container{
@@ -11,6 +49,13 @@ body{
     width: 400px;
     border-radius: 20px;
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
+    .bldgcard-bottom{
+        p{
+            font-size: 15px;
+            color: #fff;
+        }
+    }
 }
 
 .bldg-image{
@@ -27,6 +72,7 @@ body{
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     }
 }
+
 
 .bldgcard-title{
     display: flex;
@@ -90,7 +136,7 @@ body{
     .available{
         display: flex;
         align-items: center;
-        padding-left: 200px;
+        padding-left: 210px;
 
         i{
             color: #63FF58;
@@ -104,12 +150,6 @@ body{
     display: flex;
     flex-direction: column;
 
-
-    .bldgheader img{
-        display: flex;
-        width: 1200px;
-        height: 10vh;
-    }
     .bldg{
         #bldg-title{
             color: #294A70;
@@ -122,6 +162,7 @@ body{
             display: flex;
             flex-direction: row;
             align-items: center;
+            padding-top: 30px;
             p{
                 padding-right: 5px;
             }

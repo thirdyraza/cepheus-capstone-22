@@ -1,0 +1,40 @@
+.loading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.loading img{
+    width: 120px;
+    height: 120px;
+    padding: 20px;
+    animation: fade 1.5s infinite linear
+}
+
+.loading p, .loading h3{
+    padding: 2px;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    animation: fade 1.5s infinite linear
+}
+
+
+@keyframes fade{
+    0% {
+        opacity: 0%;
+    }
+    25%{
+        opacity: 50%
+    }
+    50% {
+        opacity: 100%;
+    }
+    75%{
+        opacity: 50%
+    }
+    100% {
+        opacity: 0%;
+    }
+}
