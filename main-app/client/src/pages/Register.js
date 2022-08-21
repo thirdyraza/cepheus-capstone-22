@@ -224,6 +224,7 @@ function App() {
                             value = {midi}
                             onChange = {(e) => setMidI(e.target.value)}
                             type="text"
+                            required
                             placeholder="Enter Middle Initial"
                             maxLength={2}
                             />

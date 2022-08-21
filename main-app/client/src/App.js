@@ -4,6 +4,7 @@ import LoadingScreen from './Loading'
 import Login from './pages/LogIn'
 import Register from './pages/Register'
 import Homepage from './pages/Homepage'
+import UserType from './pages/UserType';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={ <Login/> }></Route>
+                <Route path='/login' element={ <UserType/> }></Route>
                 <Route path='/homepage' element={ <Homepage/> }></Route>
                 <Route path='/homepage/register' element={ <Register/> }></Route>
             </Routes>

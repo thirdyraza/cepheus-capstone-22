@@ -11,7 +11,7 @@ app.use(cors())
 app.use(express.json())
 
 // mongodb connection
-mongoose.connect('mongodb://127.0.0.1:27017/mern-stack-yt')
+mongoose.connect('mongodb://127.0.0.1:27017/usl-reserves')
 
 // REGISTER function using db
 app.post('/api/register', async (req, res) => {
@@ -102,8 +102,9 @@ app.post('/api/login', async (req, res) => {
     
 })
 
+
 // getting info for HOME using db
-app.get('/api/home', async (req, res) => {
+app.get('/api/chtype', async (req, res) => {
 
     const token = req.headers['x-access-token']
     try{
@@ -111,24 +112,23 @@ app.get('/api/home', async (req, res) => {
         const idnum = decoded.idnum
         const user = await User.findOne({ idnum:idnum })
 
-        return res.json({
-            status: 'success',
-            idnum: user.idnum,
-            fname: user.fname,
-            role:user.role,
-            midi: user.midi,
-            lname: user.lname,
-            org: user.org,
-            dept: user.dept
-            })
+        if(user){
+            if(user.role === 'Faculty' || user.role === 'Student Officer'){
+                return res.json({ utype: 'user' })
+            } else if(user.role === 'Approving Admin' || user.role === 'System Admin'){
+                return res.json({ utype: 'admin' })
+            }
+        }
     }catch(err){
         res.json({ status: 'error', error: 'invalid token'})
     }
+
+    
 })
 
 console.log(mongoose.connection.readyState);
 
 // establishing PORT + testing
 app.listen(2301, () => {
-    console.log('server is running');
+    console.log('server is running at 2301');
 })

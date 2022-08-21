@@ -32,7 +32,7 @@ function App() {
     if(data.status === 'success'){ // user id is existing
       if(data.user){ // user credentials correct
         localStorage.setItem('token', data.user)
-        navigate('/homepage')
+        navigate('/login')
       }
     }else if(data.status === 'unknownID'){
       setErrIdnum('User not Found')
