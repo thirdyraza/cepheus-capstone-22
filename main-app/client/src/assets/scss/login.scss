@@ -22,10 +22,11 @@
 .logo{
     margin: 30px 0 0 30px;
     display: flex;
-}
-.logo img{
-    width: 85px;
-    position: fixed;
+
+    img{
+        width: 85px;
+        position: fixed;
+    }
 }
 
 .login-container{
@@ -42,37 +43,40 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 35px;
-}
 
-.login-inputs a{
-    text-decoration: none;
-    text-align: right;
-    margin-top: 10px;
-    margin-bottom: 50px;
-    color: #294A70;
-    font-size: 11px;
-    font-weight: 600;
-}
-.login-inputs label{
-    margin:0 0 10px 12px;
-}
+    a{
+        text-decoration: none;
+        text-align: right;
+        margin-top: 10px;
+        margin-bottom: 50px;
+        color: #294A70;
+        font-size: 11px;
+        font-weight: 600;
+    }
 
-.login-inputs input{
-    border: 0px solid;
-    border:  2px rgba(34, 34, 34, 0.308) solid;
-    border-radius: 100px;
-    padding: 15px 30px;
-    color: rgba(34, 34, 34, 0.596);
-    font-size: 14px; 
+    label{
+        margin:0 0 10px 12px;
+    }
+
+    input{
+        border: 0px solid;
+        border:  2px rgba(34, 34, 34, 0.308) solid;
+        border-radius: 100px;
+        padding: 15px 30px;
+        color: rgba(34, 34, 34, 0.596);
+        font-size: 14px; 
+    }
+
 }
 
 .branding{
     margin-top: 80px;
     margin-bottom: 50px;
     text-align: center;
-}
-    .branding h1{
+
+    h1{
         font-weight: 700;
+    }
 }
 
 .login-button{

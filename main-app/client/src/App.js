@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import LoadingScreen from './Loading'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoadingScreen from './util/Loading'
 import Login from './pages/LogIn'
 import Register from './pages/Register'
-import Homepage from './pages/Homepage'
 import UserType from './pages/UserType';
-
+import Main from './pages/Main';
+import UserHome from './pages/Home-User';
+import AdminHome from './pages/Home-Admin';
+import Backbone from './util/Backbone';
+import RequireAuth from './util/RequireAuth';
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -18,14 +21,26 @@ function App() {
     <>
     {loading === false ? (
     <div>
-        <BrowserRouter>
+        <Router>
             <Routes>
-                <Route path='/' element={ <Login/> }></Route>
-                <Route path='/login' element={ <UserType/> }></Route>
-                <Route path='/homepage' element={ <Homepage/> }></Route>
-                <Route path='/homepage/register' element={ <Register/> }></Route>
+              <Route path='/' element={<Backbone />}>
+
+                {/* private routes */}
+                <Route element={<RequireAuth/>}>
+                  <Route path='/' element={ <Main/> }>
+                    <Route path='home:user' element={<UserHome />}></Route>
+                    <Route path='home:admin' element={<AdminHome />}></Route>                  
+                  </Route>
+                </Route>            
+
+                {/* public routes */} 
+                <Route path='login' element={ <Login/> }></Route>
+                <Route path='user-type' element={ <UserType/> }></Route>
+                <Route path='register' element={ <Register/> }></Route>
+              
+              </Route>
             </Routes>
-        </BrowserRouter>
+        </Router>
     </div>
       ) : (
         <LoadingScreen />

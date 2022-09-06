@@ -1,21 +1,29 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import PrivateRoutes from '../util/PrivateRoutes';
 
 const UserType = () => {
     const [role, setRole] = useState('')
-    const navigate = useNavigate()
+    const { auth } = useAuth()
 
     function setFacuType(event){
         setRole(event.target.value)
-        navigate('/homepage')
+        return (
+            auth?.user ? <PrivateRoutes/> : <Navigate to="/login" />
+        );
     }
     function setStudType(event){
         setRole(event.target.value)
-        navigate('/homepage')
+        return (
+            auth?.user ? <PrivateRoutes/> : <Navigate to="/login" />
+        );
     }
     function setAdminType(event){
         setRole(event.target.value)
-        navigate('/homepage')
+        return (
+            auth?.user ? <PrivateRoutes/> : <Navigate to="/login" />
+        );
     }
     return(
         <div className="type-cont">

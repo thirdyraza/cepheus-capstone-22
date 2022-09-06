@@ -1,16 +1,17 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import '../assets/scss/login.scss'
 import logo from '../assets/images/logo.png'
 
 function App() {
   const [idnum, setIDNum] = useState('')
   const [pass, setPass] = useState('')
-  const navigate = useNavigate()
 
   const [errIdnum, setErrIdnum] = useState('')
   const [errPass, setErrPass] = useState('')
   const [errForm, setErrForm] = useState('')
+
+  const navigate = useNavigate()
 
   // user authentication
   async function loginUser(event){
@@ -32,7 +33,7 @@ function App() {
     if(data.status === 'success'){ // user id is existing
       if(data.user){ // user credentials correct
         localStorage.setItem('token', data.user)
-        navigate('/login')
+        navigate('/user-type')
       }
     }else if(data.status === 'unknownID'){
       setErrIdnum('User not Found')

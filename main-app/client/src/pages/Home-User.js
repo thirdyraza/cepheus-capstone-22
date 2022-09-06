@@ -7,7 +7,7 @@ import bg from '../assets/images/bannerpic1.jpg';
 function Home() {
   const navigate = useNavigate()
   async function goToReg(){
-    navigate('/homepage/register')
+    navigate('/register')
   }
 
   return (
