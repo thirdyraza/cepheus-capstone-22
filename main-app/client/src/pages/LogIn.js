@@ -1,15 +1,18 @@
 import { useState } from 'react'
-import { useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import '../assets/scss/login.scss'
 import logo from '../assets/images/logo.png'
 
-function App() {
+function Login() {
   const [idnum, setIDNum] = useState('')
   const [pass, setPass] = useState('')
 
   const [errIdnum, setErrIdnum] = useState('')
   const [errPass, setErrPass] = useState('')
   const [errForm, setErrForm] = useState('')
+
+  // const location = useLocation();
+  // const from = location.state?.from?.pathname || "/home"
 
   const navigate = useNavigate()
 
@@ -34,6 +37,7 @@ function App() {
       if(data.user){ // user credentials correct
         localStorage.setItem('token', data.user)
         navigate('/user-type')
+        // navigate(from, {replace: true})
       }
     }else if(data.status === 'unknownID'){
       setErrIdnum('User not Found')
@@ -99,4 +103,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
