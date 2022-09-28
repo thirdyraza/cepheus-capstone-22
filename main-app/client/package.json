@@ -13,7 +13,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.3.0",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
     "scss": "^0.2.4",
     "stream": "^0.0.2",

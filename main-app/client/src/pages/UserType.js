@@ -7,15 +7,15 @@ const UserType = () => {
 
     function setFacuType(event){
         setRole(event.target.value)
-        navigate('/user')
+        navigate('/home/user')
     }
     function setStudType(event){
         setRole(event.target.value)
-        navigate('/user')
+        navigate('/home/user')
     }
     function setAdminType(event){
         setRole(event.target.value)
-        navigate('/admin')
+        navigate('/home/admin')
     }
     return(
         <div className="type-cont">
