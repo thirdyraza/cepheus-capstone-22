@@ -8,6 +8,7 @@ import AdminHome from './pages/Home-Admin';
 import Landing from './pages/Landing';
 import Notification from './pages/Notifications';
 import MainForm from './pages/MainForm';
+import SettingPopup from './pages/SettingPopup';
 
 function App() {
   // {/*const [loading, setLoading] = useState(true)
@@ -33,6 +34,7 @@ function App() {
                   </Route>
                   <Route path='notifications' element={<Notification />}></Route>
                   <Route path='reserve' element={<MainForm />}></Route>
+                  <Route path='settings' element={ <SettingPopup/> }></Route>  
             </Routes>
         </Router>
     </div>

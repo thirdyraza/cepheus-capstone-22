@@ -13,7 +13,7 @@ function Home() {
   return (
     <div class='content-container'>
       
-      <div class='banner' style={{ backgroundImage: `url(${bg})` }}>
+      <div class='home-banner' style={{ backgroundImage: `url(${bg})` }}>
         <p >WELCOME</p>
         <p class='louisian'>LOUISIAN</p>
       </div>

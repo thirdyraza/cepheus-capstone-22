@@ -50,10 +50,12 @@ function Login() {
   }
 
   return (
-    <body>
+    <body> 
+      {/* log in heading */}
       <div class="logo">
         <img src={logo} alt="" />
       </div>
+      {/* log in form */}
       <div class="main-login">
         <div class="login-container">
           <div class="login-wrap">
