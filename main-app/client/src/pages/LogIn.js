@@ -2,19 +2,23 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../assets/scss/login.scss'
 import logo from '../assets/images/logo.png'
+import User_Popup from './UserPopup'
+
+// Open Pop up Function
+function openPopup(){
+  document.getElementById('popup_container').style.cssText = 'display:flex';
+  document.getElementById('close').style.cssText = 'display:flex';
+  document.getElementById('open_popup').style.cssText = 'display:hidden';
+}
 
 function Login() {
   const [idnum, setIDNum] = useState('')
   const [pass, setPass] = useState('')
+  const navigate = useNavigate()
 
   const [errIdnum, setErrIdnum] = useState('')
   const [errPass, setErrPass] = useState('')
   const [errForm, setErrForm] = useState('')
-
-  // const location = useLocation();
-  // const from = location.state?.from?.pathname || "/home"
-
-  const navigate = useNavigate()
 
   // user authentication
   async function loginUser(event){
@@ -36,8 +40,7 @@ function Login() {
     if(data.status === 'success'){ // user id is existing
       if(data.user){ // user credentials correct
         localStorage.setItem('token', data.user)
-        navigate('/user-type')
-        // navigate(from, {replace: true})
+        navigate('/homepage')
       }
     }else if(data.status === 'unknownID'){
       setErrIdnum('User not Found')
@@ -50,13 +53,26 @@ function Login() {
   }
 
   return (
-    <body> 
-      {/* log in heading */}
+    <body>
       <div class="logo">
         <img src={logo} alt="" />
       </div>
-      {/* log in form */}
       <div class="main-login">
+        <div class="titling">
+              <div class="biglogo">
+                <img src={logo} alt="" />
+              </div>
+
+              <div class="texts">
+                  <div class="bigtext">
+                      <p>UNIVERSITY OF</p>
+                      <p class="saint">SAINT LOUIS</p>
+                  </div>
+                  <div class="smalltext">
+                      <p>Facility Reservation System</p>
+                  </div>
+              </div>
+          </div>
         <div class="login-container">
           <div class="login-wrap">
             <div class="branding">
@@ -95,9 +111,9 @@ function Login() {
                   <a href="/login">FORGOT PASSWORD?</a>
                 </div>                
               </div>
-              <input type="submit" class="login-button" value="SIGN IN" />
+              <input type='button' onClick={openPopup} class="login-button" value="SIGN IN"/>
+              <User_Popup/>
             </form>
-                  
             </div>
           </div>
       </div>

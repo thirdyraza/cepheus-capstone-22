@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import ADMIN from '../assets/images/ADMIN.png';
 import FACULTY from '../assets/images/FACULTY.png';
 import STUDENT from '../assets/images/STUDENT.png';
@@ -9,20 +10,30 @@ function closePopup(){
     document.getElementById('close').style.cssText = 'display:none';
     document.getElementById('open_popup').style.cssText = 'opacity: 100%';
 }
-function openPopup(){
-    document.getElementById('popup_container').style.cssText = 'display:flex';
-    document.getElementById('close').style.cssText = 'display:flex';
-    document.getElementById('open_popup').style.cssText = 'display:hidden';
-}
+// function openPopup(){
+//     document.getElementById('popup_container').style.cssText = 'display:flex';
+//     document.getElementById('close').style.cssText = 'display:flex';
+//     document.getElementById('open_popup').style.cssText = 'display:hidden';
+// }
 
 const User_Popup = () => {
+
+    const navigate = useNavigate()
+
+    function User() {
+        navigate('/home/user')
+    }
+    function Admin() {
+        navigate('/home/admin')
+    }
+
     return ( 
     <div class="testing-popup">
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
 
-        <div id='open_popup'class='open' onClick={openPopup}>
+        {/* <div id='open_popup'class='open' onClick={openPopup}>
            <h3>Login</h3>
-        </div>
+        </div> */}
 
 
         <div id='popup_container' onClick={closePopup}>
@@ -32,18 +43,18 @@ const User_Popup = () => {
                 </div>
                     <h1>SELECT USER TYPE</h1>
                     <div className="UserType">
-                        <div className="UserAdmin">
-                            <img src={ADMIN}/>
+                        <div className="UserAdmin" onClick={Admin}>
+                            <img src={ADMIN} alt=' '/>
                             <h2>ADMIN</h2>
                         </div>
 
-                        <div className="UserStudent">
-                            <img src={STUDENT}/>
+                        <div className="UserStudent" onClick={User}>
+                            <img src={STUDENT} alt=' '/>
                             <h2>STUDENT</h2>
                         </div>
 
-                        <div className="UserFaculty">
-                            <img src={FACULTY}/>
+                        <div className="UserFaculty" onClick={User}>
+                            <img src={FACULTY} alt=' '/>
                             <h2>FACULTY</h2>    
                         </div>
                     </div>

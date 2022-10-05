@@ -1,18 +1,19 @@
 import '../global.scss';
 import '../assets/scss/landing.scss';
+import { useNavigate } from 'react-router';
 import logo from '../assets/images/logo.png'
 import Statue from '../assets/images/USL_Welcome.png'
 import shape1 from '../assets/images/Shapes1.png'
 import shape2 from '../assets/images/Shapes2.png'
 import shape3 from '../assets/images/Shapes3.png'
 import vector from '../assets/images/Vector.svg'
-import { useNavigate } from 'react-router';
 
 function LandingPage() {
-    const navigate = useNavigate()
-    function Signin() {
-      navigate('login')
-    }
+
+  const navigate = useNavigate()
+  function Signin() {
+    navigate('login')
+  }
     return (
     <div className='landing_container'>
         <div className='landing_nav'>
@@ -34,15 +35,17 @@ function LandingPage() {
                     </div>
                     <span className='light'>Everything, right where you need it.</span>
                     <p className='lc_details'>School Facilities Reservation System that aids the University Stakeholders in processing facility reservations by computerizing the processes of reserving buildings and rooms for different purposes.</p>
-                      <button onClick={Signin} className='btnLanding'>SIGN-IN</button>              
+                    <div>
+                      <button className='btnLanding' onClick={Signin}>SIGN-IN</button>
+                    </div>
                 </div>
 
       {/* contacts */}
       <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'></link>
 
       <div class='yourReqs'>
-          <h2>Let's work together.</h2>
-          <h3>Contact me for further queries or suggestions to improve our system. </h3>
+
+          <h3>Don't have an account? Contact us at </h3>
           <div class="contact">
             <div class="contact-icon">
               <i class='bx bxs-envelope' ></i>
@@ -68,7 +71,7 @@ function LandingPage() {
       </div>
             </div>
             <div className='lc_right'>
-                <img src={Statue} alt=' '/>
+                <img src={Statue}/>
             </div>
         </div>
 
@@ -78,7 +81,7 @@ function LandingPage() {
         <img className='shape2' src={shape2} alt=' '/>
         <img className='shape3' src={shape3} alt=' '/>
 
-        <img className='vector' src={vector} alt=' '/>        
+        <img className='vector' src={vector}/>        
     </div>
 
     );

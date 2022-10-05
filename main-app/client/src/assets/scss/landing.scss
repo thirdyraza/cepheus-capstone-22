@@ -3,7 +3,8 @@
     background-color: #fff;
     border-radius: 15px;
     overflow: hidden;
-    height: 94vh;
+    margin: 15px;
+    height: 95.5vh;
     .landing_nav{
         background-color: #699BF7;
         position: relative;
@@ -62,6 +63,7 @@
         
 
         .lc_left{
+            margin-top: 35px;
             color: #fff;
             width: 50%;
             height: 100%;
@@ -111,6 +113,7 @@
                 border-radius: 50px;
                 box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
                 font-size: 15px;
+                border-style: none;        
 
                 &:hover{
                     transition: .5s ease;
@@ -123,7 +126,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                padding: 50px;
+                padding: 0px 50px;
                 width: 43vw;
                 height: 350px;
                 font-size: 20px;
