@@ -102,15 +102,7 @@
     }
   }
   #open_popup{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    opacity: 100%;
-    padding: 15px;
-    border-radius: 15px;
-    transition: .5s ease;
-    width: 500px;
+
     &:hover{
       transform: scale(1.1);
       transition: .5s ease;
@@ -136,7 +128,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #3B5165;
+      background-color: $color-blue;
       line-height: 1;
       padding: 30px;
       width: 100%;
@@ -169,7 +161,9 @@
       padding: 25px ;
 
       .btnSettings{
-        background-color: #3B5165;
+        text-decoration: none;
+        color: #fff;
+        background-color: $color-blue;
         border-radius: 50px;
         padding: 15px;
         width: 180px;

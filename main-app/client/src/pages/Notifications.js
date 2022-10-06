@@ -1,6 +1,8 @@
 import '../assets/scss/Notifications.scss'
 import NotificationCard from './Notification-Card';
 import React, { useState } from "react";
+import Sidenav from './Sidenav_User'
+
 
 const NotificationsPage = () => {
 
@@ -56,6 +58,11 @@ const NotificationsPage = () => {
     ]);
 
     return ( 
+        <div className="app">
+        <div id="side">
+          <Sidenav />
+        </div>
+        <div>
         <div className='notifications'>
             <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
 
@@ -96,6 +103,9 @@ const NotificationsPage = () => {
             <NotificationCard select={ selectnotif }/>
 
         </div>
+        </div>
+      </div>
+
      );
 }
  

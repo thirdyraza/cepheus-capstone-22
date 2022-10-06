@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
+
 const NotificationCard = (props) => {
     const select=props.select;
 
     return ( 
-        <div>
+    <div>
         {select.map((select)=>(
-        <div className="notif-content">
+            <div className="notif-content">
                 <div value={select.value} className="notif-indicator">
                 <i class='bx bxs-circle' ></i>
                 </div>
@@ -25,10 +27,9 @@ const NotificationCard = (props) => {
                     <p>{select.date}</p>
                     <p>{select.time}</p>
                 </div>
-
-                <div className="btnDetails">
+                <Link to="/home/request-details" className="btnDetails">
                     <button id="btnDetails">Details</button>
-                </div>
+                </Link>
             </div>
         ))}   
     </div>

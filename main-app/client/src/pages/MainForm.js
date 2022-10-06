@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SelectInput from "./SelectInput";
 import '../assets/scss/MainForm.scss';
-import Sidenav from './Sidenav';
+import Sidenav from './Sidenav_User';
 import { Link } from "react-router-dom";
 
 const MainForm=() =>{
@@ -38,13 +38,14 @@ const MainForm=() =>{
     ]);
 
     return(
-            <div>
+        <div className="app">
+        <div id="side">
+          <Sidenav />
+        </div>
+        <div>
+        <div>
                 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
-            
-                <div id='side'>
-                </div>
                 <div className="form-container">
-
                     <form>
                         <Link to='/home/admin'>
                         <div id="btnBack" className="btnForm">
@@ -131,6 +132,9 @@ const MainForm=() =>{
                     </form>
                 </div>
             </div>
+        </div>
+      </div>
+            
     )
 }
 

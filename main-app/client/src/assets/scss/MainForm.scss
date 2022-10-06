@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 .form-container{
-    padding: 40px 150px;
-    margin: 0px 70px;
-    background-color: #E6E6E6;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-    border-radius: 10px;
-    height: 850px;
-    font-size: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100%;
+    width: 92.4vw;
 
     // Button CSS
     .btnForm{

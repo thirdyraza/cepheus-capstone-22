@@ -9,6 +9,7 @@ import Landing from './pages/Landing';
 import Notification from './pages/Notifications';
 import MainForm from './pages/MainForm';
 import SettingPopup from './pages/SettingPopup';
+import DetailedNotifications from './pages/Detailed-Notification';
 
 function App() {
   // {/*const [loading, setLoading] = useState(true)
@@ -25,12 +26,13 @@ function App() {
                 {/* public routes */} 
                 <Route path='login' element={ <Login /> }></Route>
                 <Route path='user-type' element={ <UserType /> }></Route>
-                <Route path='register' element={ <Register /> }></Route>
+                <Route path='register' element={ <Register /> }></Route>  
 
                 {/* private routes */}
                   <Route path='home' element={ <Main /> }>
+                    <Route path='request-details' element={ <DetailedNotifications /> }></Route>
                     <Route path='user' element={<UserHome />}></Route>
-                    <Route path='admin' element={<AdminHome />}></Route>                    
+                    <Route path='admin' element={<AdminHome />}></Route>   
                   </Route>
                   <Route path='notifications' element={<Notification />}></Route>
                   <Route path='reserve' element={<MainForm />}></Route>
