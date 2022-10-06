@@ -10,6 +10,10 @@ import Notification from './pages/Notifications';
 import MainForm from './pages/MainForm';
 import SettingPopup from './pages/SettingPopup';
 import DetailedNotifications from './pages/Detailed-Notification';
+// import Homepage from './pages/Homepage'
+import Buildings from './pages/Buildings'
+
+
 
 function App() {
   // {/*const [loading, setLoading] = useState(true)
@@ -37,6 +41,11 @@ function App() {
                   <Route path='notifications' element={<Notification />}></Route>
                   <Route path='reserve' element={<MainForm />}></Route>
                   <Route path='settings' element={ <SettingPopup/> }></Route>  
+
+                <Route path='/' element={ <Login/> }></Route>                
+                <Route path='/homepage' element={ <Homepage/> }></Route>
+                <Route path='/homepage/register' element={ <Register/> }></Route>
+                <Route path='/buildings' element={ <Buildings/>}> </Route>
             </Routes>
         </Router>
     </div>

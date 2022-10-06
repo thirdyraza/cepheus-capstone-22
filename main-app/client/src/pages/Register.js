@@ -83,6 +83,7 @@ function App() {
           org,
           idnum,
           pass,
+          cpass,
           role
         }),
       })
@@ -116,11 +117,14 @@ function App() {
       }
     } else if (pass === ''){
       setErrPass("Password cannot be empty")
+      return
     } else if (cpass === ''){
       setErrCpass("Please re-type your password")
+      return
     } else{
       setErrCpass("Password do not match")
       setErrPass("Password do not match")
+      return
     }
   }
 
@@ -225,6 +229,8 @@ function App() {
                             onChange = {(e) => setMidI(e.target.value)}
                             type="text"
                             required
+                            onInvalid={e => e.target.setCustomValidity('Please enter Middle Initial')}
+                            onInput={e => e.target.setCustomValidity('')}
                             placeholder="Enter Middle Initial"
                             maxLength={2}
                             />

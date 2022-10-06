@@ -1,5 +1,4 @@
 @import './var&mixins.scss';
-
 *{
     font-weight: 500;
     margin: 0;
@@ -9,6 +8,7 @@
 .main-login{
     height: 55vh;
     width: 100%;
+    margin-top: 150px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -34,6 +34,13 @@
     
     .biglogo img{
         width: 20vw;    
+        font-size: 1.6vw;
+        
+    }
+    
+    .biglogo img{
+        width: 20vw;
+
     }
 }
 
@@ -52,6 +59,9 @@
     img{
         width: 85px;
     }  
+}
+.logo img{
+    width: 85px;
 }
 
 .login-container{
