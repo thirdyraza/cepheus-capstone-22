@@ -38,11 +38,11 @@ const MainForm=() =>{
     ]);
 
     return(
-        <div className="app">
+    <div className="app">
         <div id="side">
           <Sidenav />
         </div>
-        <div>
+        <div id="home">
         <div>
                 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
                 <div className="form-container">
@@ -133,7 +133,7 @@ const MainForm=() =>{
                 </div>
             </div>
         </div>
-      </div>
+    </div>
             
     )
 }

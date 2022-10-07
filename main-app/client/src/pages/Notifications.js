@@ -62,7 +62,7 @@ const NotificationsPage = () => {
         <div id="side">
           <Sidenav />
         </div>
-        <div>
+        <div id="home">
         <div className='notifications'>
             <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
 

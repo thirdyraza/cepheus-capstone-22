@@ -24,7 +24,7 @@ function openSide(){
     document.getElementById('open').style.cssText = 'opacity: 0%';
 }
 
-export default function TodoList() {
+export default function Sidenav_User() {
   return (
     <div class="main">
         <div id='open'class='open' onClick={openSide}>
