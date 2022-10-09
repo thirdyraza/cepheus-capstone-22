@@ -1,7 +1,7 @@
-import TableHead from './TableHeading';
-import UserTable from './TableContent';
-import Sidenav_Admin from './Sidenav_Admin';
-import '../assets/scss/user-management.scss';
+import TableHead from '../TableHeading';
+import UserTable from '../TableContent';
+import Sidenav_Admin from '../Admin/Sidenav_Admin';
+import '../../assets/scss/user-management.scss';
 
 function UserManagement() {
     return (

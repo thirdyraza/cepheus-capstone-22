@@ -1,4 +1,4 @@
-import '../assets/scss/Detailed-Notifications.scss'
+import '../../assets/scss/Detailed-Notifications.scss'
 import { Link } from 'react-router-dom';
 import Sidenav_Admin from './Sidenav_Admin';
 

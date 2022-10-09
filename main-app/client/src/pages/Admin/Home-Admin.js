@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-import '../assets/scss/home.scss';
-import '../global.scss';
-import bg from '../assets/images/bannerpic1.jpg';
+import '../../assets/scss/home.scss';
+import '../../global.scss';
+import bg from '../../assets/images/bannerpic1.jpg';
 
-import Sidenav_Admin from './Sidenav_Admin';
-import TableHead from './TableHeading';
-import UserTable from './TableContent';
+import Sidenav_Admin from '../Admin/Sidenav_Admin';
+import TableHead from '../TableHeading';
+import UserTable from '../TableContent';
 
 export default function userDashboard() {
   return (

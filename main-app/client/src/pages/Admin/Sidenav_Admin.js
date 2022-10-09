@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import '../assets/scss/sidenav.scss';
-import '../global.scss';
-import logo from '../assets/images/logo.png';
-import Setting_Popup from './SettingPopup';
+import '../../assets/scss/sidenav.scss';
+import '../../global.scss';
+import logo from '../../assets/images/logo.png';
+import Setting_Popup from '../SettingPopup';
 
 // Popup Function
 function openPopup(){

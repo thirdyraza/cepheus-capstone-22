@@ -1,8 +1,7 @@
-import '../assets/scss/Notifications.scss'
+import '../../assets/scss/Notifications.scss'
 import NotificationCard from './Notification-Card';
 import React, { useState } from "react";
-import Sidenav from './Sidenav_User'
-import Sidenav_Admin from './Sidenav_Admin';
+import Sidenav_Admin from '../Admin/Sidenav_Admin';
 
 
 const NotificationsPage = () => {

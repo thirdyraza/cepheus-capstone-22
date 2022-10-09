@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import SelectInput from "./SelectInput";
-import '../assets/scss/MainForm.scss';
-import Sidenav from './Sidenav_User';
-import { Link } from "react-router-dom";
-import Sidenav_Admin from "./Sidenav_Admin";
+import SelectInput from "../SelectInput";
+import '../../assets/scss/MainForm.scss';
+import Sidenav_Admin from "../Admin/Sidenav_Admin";
 
 const MainForm=() =>{
 

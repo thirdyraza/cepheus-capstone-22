@@ -2,23 +2,26 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/LogIn'
-import Register from './pages/Register'
+
 import UserType from './pages/UserType';
-import Main from './pages/Main';
 import UserHome from './pages/Home-User';
-import AdminHome from './pages/Home-Admin';
 import Landing from './pages/Landing';
-import Notification from './pages/Notifications';
-import MainForm from './pages/MainForm';
 import SettingPopup from './pages/SettingPopup';
-import DetailedNotifications from './pages/Detailed-Notification';
-import UserManagement from './pages/User-Management';
-import Archived from './pages/archived';
-import AdminsManagement from './pages/admins';
-import RequestorManagement from './pages/requestor';
-import ReqTable from './pages/user-req-table';
 
 
+
+// Admin Pages
+import Main from './pages/Admin/Main';
+import MainForm from './pages/Admin/MainForm';
+import Register from './pages/Admin/Register'
+import AdminHome from './pages/Admin/Home-Admin';
+import Notification from './pages/Admin/Notifications';
+import DetailedNotifications from './pages/Admin/Detailed-Notification';
+import UserManagement from './pages/Admin/User-Management';
+import Archived from './pages/Admin/archived';
+import AdminsManagement from './pages/Admin/admins';
+import RequestorManagement from './pages/Admin/requestor';
+import ReqTable from './pages/Admin/user-req-table';
 
 
 function App() {

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import '../assets/scss/register.scss'
-import logo from '../assets/images/logo.png'
-import Sidenav from './Sidenav_Admin'
+import '../../assets/scss/register.scss'
+import logo from '../../assets/images/logo.png'
+import Sidenav_Admin from './Sidenav_Admin';
 
 function App() {
   // declaring all data to be caught in the form
@@ -133,7 +133,7 @@ function App() {
 
     <div className="app">
     <div id="side">
-      <Sidenav />
+      <Sidenav_Admin/>
     </div>
     <div id='home'>
       <div>

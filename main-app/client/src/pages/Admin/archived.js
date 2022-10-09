@@ -1,9 +1,9 @@
-import TableHead from './TableHeading';
-import UserTable from './TableContent';
-import '../assets/scss/user-management.scss';
-import Sidenav_Admin from './Sidenav_Admin';
+import TableHead from '../TableHeading';
+import UserTable from '../TableContent';
+import '../../assets/scss/user-management.scss';
+import Sidenav_Admin from '../Admin/Sidenav_Admin';
 
-function RequestorManagement() {
+function Archived() {
     return (
         <div className="app">
         <div id="side">
@@ -12,8 +12,10 @@ function RequestorManagement() {
         <div id="home">
         <div class='container'>
             <div class='title'>
-                REQUESTOR <div class='yellow'>ACCOUNTS</div>
+                ARCHIVED <div class='yellow'>MANAGEMENT</div>
             </div>
+
+            
 
             <div class='search'>
                 <input placeholder='Search By ID'></input>
@@ -21,19 +23,18 @@ function RequestorManagement() {
             </div>
 
             <div class='table-heading'>
-                <TableHead/>
+                <TableHead />
             </div>
             <div class='table-cell'>
-                <UserTable/>
-                <UserTable/>
-                <UserTable/>
-                <UserTable/>
-                <UserTable/>
+                <UserTable />
+                <UserTable />
+                <UserTable />
+                <UserTable />
+                <UserTable />
             </div>
             <div class='buttons'>
-                <div>ARCHIVE</div>
-                <div>UPDATE USER</div>
-                <div>ADD USER</div>
+                <a>RESTORE USER</a>
+                <a>DELETE</a>
             </div>
         </div>
         </div>
@@ -42,5 +43,4 @@ function RequestorManagement() {
     );
 }
 
-
-export default RequestorManagement;
+export default Archived;
