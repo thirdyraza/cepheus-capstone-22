@@ -1,9 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 import '../assets/scss/home.scss';
 import '../global.scss';
 import bg from '../assets/images/bannerpic1.jpg';
-import { Link } from 'react-router-dom';
+
 import Sidenav_Admin from './Sidenav_Admin';
+import TableHead from './TableHeading';
+import UserTable from './TableContent';
 
 export default function userDashboard() {
   return (
@@ -30,8 +34,29 @@ export default function userDashboard() {
             </Link>
           </div>
 
-          <div class='requests'>
-            
+        <div class='requests'>
+
+          <div id='ownreq' class='user-req'>
+            <h1>YOUR REQUESTS</h1>
+              <TableHead />
+              <UserTable/>
+              <UserTable/>
+              <UserTable/>
+              <UserTable/>  
+            <div class='more'>See more ...</div>
+          </div>
+
+          <div id='otherreq' class='user-req'>
+            <h1>USER REQUESTS</h1>
+              <TableHead />
+              <UserTable/>
+              <UserTable/>
+              <UserTable/>
+              <UserTable/> 
+              <div class='more'>See more ...</div> 
+          </div>
+
+
           </div>
 
           <div class='lvl2'>

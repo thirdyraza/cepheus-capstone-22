@@ -1,5 +1,4 @@
 import { Outlet } from "react-router";
-import Sidenav from './Sidenav_Admin'
 
 const Main = () => {
   return (

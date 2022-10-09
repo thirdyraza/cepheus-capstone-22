@@ -1,17 +1,20 @@
 import '../assets/scss/Detailed-Notifications.scss'
 import { Link } from 'react-router-dom';
+import Sidenav_Admin from './Sidenav_Admin';
 
 const DetailedNotifications = () => {
     return ( 
         <div class='app'>
-            <div class="RD-Container">
-
+            <div id="side">
+                <Sidenav_Admin/>
+            </div>
+            <div id='home' class="RD-Container">
                 <style>
-                @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap');
+                    @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap');
                 </style>
 
                 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
-
+                
                 <Link to="/notifications" id="btnBack" className="RD-Btns">
                     <i class='bx bx-arrow-back' ></i>
                     <p>Back</p>

@@ -2,6 +2,7 @@ import '../assets/scss/Notifications.scss'
 import NotificationCard from './Notification-Card';
 import React, { useState } from "react";
 import Sidenav from './Sidenav_User'
+import Sidenav_Admin from './Sidenav_Admin';
 
 
 const NotificationsPage = () => {
@@ -60,7 +61,7 @@ const NotificationsPage = () => {
     return ( 
         <div className="app">
         <div id="side">
-          <Sidenav />
+          <Sidenav_Admin />
         </div>
         <div id="home">
         <div className='notifications'>

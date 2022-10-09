@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import '../assets/scss/register.scss'
 import logo from '../assets/images/logo.png'
-import Sidenav from './Sidenav_User'
+import Sidenav from './Sidenav_Admin'
 
 function App() {
   // declaring all data to be caught in the form
@@ -135,7 +135,7 @@ function App() {
     <div id="side">
       <Sidenav />
     </div>
-    <div>
+    <div id='home'>
       <div>
         <div class="logo">
             <img src={logo} alt="" />
@@ -217,6 +217,31 @@ function App() {
                     </div>
 
                     <div class="reg-inputs">
+                        <label for="Dept">Department</label>
+                        <select
+                        id="dept" name="Department"
+                        value = {dept}
+                        onChange={changeSelectOptionHandler}
+                        type="text"
+                        required
+                        placeholder="Enter Department">
+                          <option>- - -</option>
+                          <option>SEAITE</option>
+                          <option>SABH</option>
+                          <option>SEAS</option>
+                          <option>SHAS</option>
+                        </select>
+                        <br />
+                        {errDept && <div className="error"> {errDept} </div>}
+                    </div>
+
+                  </div>
+                  {/* Divider End */}
+
+                  {/* Divider Start*/}
+                  <div>
+                                        
+                  <div class="reg-inputs">
                         <label for="fname" >First Name</label>
                         <input
                         id="fname" name="FName"
@@ -230,12 +255,6 @@ function App() {
                         <br />
                         {errFname && <div className="error"> {errFname} </div>}
                     </div>
-
-                  </div>
-                  {/* Divider End */}
-
-                  {/* Divider Start*/}
-                  <div>
                     <div class="reg-inputs">
                         <label for="MI">Middle Initial</label>
                         <input
@@ -265,25 +284,6 @@ function App() {
                         onInput={e => e.target.setCustomValidity('')}  />
                         <br />
                         {errLname && <div className="error"> {errLname} </div>}
-                    </div>
-
-                    <div class="reg-inputs">
-                        <label for="Dept">Department</label>
-                        <select
-                        id="dept" name="Department"
-                        value = {dept}
-                        onChange={changeSelectOptionHandler}
-                        type="text"
-                        required
-                        placeholder="Enter Department">
-                          <option>- - -</option>
-                          <option>SEAITE</option>
-                          <option>SABH</option>
-                          <option>SEAS</option>
-                          <option>SHAS</option>
-                        </select>
-                        <br />
-                        {errDept && <div className="error"> {errDept} </div>}
                     </div>
 
                     <div class="reg-inputs">
