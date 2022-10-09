@@ -132,9 +132,6 @@ function App() {
   return (
 
     <div className="app">
-    <div id="side">
-      <Sidenav_Admin/>
-    </div>
     <div id='home'>
       <div>
         <div class="logo">

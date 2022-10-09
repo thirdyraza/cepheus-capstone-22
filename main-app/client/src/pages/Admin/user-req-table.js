@@ -8,11 +8,7 @@ function ReqTable() {
   return (        
 
     <div className="app">
-    <div id="side">
-      <Sidenav_Admin/>
-    </div>
     <div id="home">
-
     <div class='container'>
   <div class='title'>
       USER <div class='yellow'>REQUESTS</div>

@@ -11,7 +11,7 @@ import SettingPopup from './pages/SettingPopup';
 
 
 // Admin Pages
-import Main from './pages/Admin/Main';
+import AdminMain from './pages/Admin/AdminMain';
 import MainForm from './pages/Admin/MainForm';
 import Register from './pages/Admin/Register'
 import AdminHome from './pages/Admin/Home-Admin';
@@ -40,8 +40,8 @@ function App() {
                 <Route path='user-type' element={ <UserType /> }></Route>
                 <Route path='register' element={ <Register /> }></Route>  
 
-                {/* private routes */}
-                  <Route path='home' element={ <Main /> }>
+                {/* Admin Routes */}
+                  <Route path='home' element={ <AdminMain /> }>
                     <Route path='request-details' element={ <DetailedNotifications /> }></Route>
                     <Route path='user' element={<UserHome />}></Route>
                     <Route path='admin' element={<AdminHome />}></Route>   
@@ -50,11 +50,11 @@ function App() {
                     <Route path='admins' element={<AdminsManagement/>}></Route> 
                     <Route path='requestor' element={<RequestorManagement/>}></Route> 
                     <Route path='request-list' element={<ReqTable />}></Route>
+                    <Route path='notifications' element={<Notification />}></Route>
+                    <Route path='reserve' element={<MainForm />}></Route>
+                    <Route path='settings' element={ <SettingPopup/> }></Route>  
                   </Route>
-                  <Route path='notifications' element={<Notification />}></Route>
-                  <Route path='reserve' element={<MainForm />}></Route>
-                  <Route path='settings' element={ <SettingPopup/> }></Route>  
-
+    
                 <Route path='/' element={ <Login/> }></Route>                
                 <Route path='/homepage/register' element={ <Register/> }></Route>
             </Routes>

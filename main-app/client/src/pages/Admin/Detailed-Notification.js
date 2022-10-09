@@ -5,9 +5,6 @@ import Sidenav_Admin from './Sidenav_Admin';
 const DetailedNotifications = () => {
     return ( 
         <div class='app'>
-            <div id="side">
-                <Sidenav_Admin/>
-            </div>
             <div id='home' class="RD-Container">
                 <style>
                     @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap');

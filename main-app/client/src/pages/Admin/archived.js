@@ -6,9 +6,6 @@ import Sidenav_Admin from '../Admin/Sidenav_Admin';
 function Archived() {
     return (
         <div className="app">
-        <div id="side">
-            <Sidenav_Admin/>
-        </div>
         <div id="home">
         <div class='container'>
             <div class='title'>

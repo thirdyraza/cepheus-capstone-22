@@ -1,14 +1,10 @@
 import TableHead from '../TableHeading';
 import UserTable from '../TableContent';
 import '../../assets/scss/Table.scss';
-import Sidenav_Admin from '../Admin/Sidenav_Admin';
 
 function AdminsManagement() {
     return (
         <div className="app">
-        <div id="side">
-            <Sidenav_Admin/>
-        </div>
         <div id="home">
         <div class='container'>
             <div class='title'>

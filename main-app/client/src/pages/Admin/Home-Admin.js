@@ -12,9 +12,6 @@ import UserTable from '../TableContent';
 export default function userDashboard() {
   return (
     <div className="app">
-      <div id="side">
-        <Sidenav_Admin/>
-      </div>
       <div id="home">
         <div class='content-container'>
           <div class='home-banner' style={{ backgroundImage: `url(${bg})` }}>

@@ -1,17 +1,20 @@
 import { Outlet } from "react-router";
+import Sidenav_Admin from "./Sidenav_Admin";
 
-const Main = () => {
+
+const AdminMain = () => {
   return (
 
     <div className="app">
       <div id="side">
+        <Sidenav_Admin/>
       </div>
       <div id="home">
-        <Outlet />
+        <Outlet/>
       </div>
     </div>
     
   );
 }
 
-export default Main;
+export default AdminMain;

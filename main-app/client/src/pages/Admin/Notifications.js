@@ -59,9 +59,6 @@ const NotificationsPage = () => {
 
     return ( 
         <div className="app">
-        <div id="side">
-          <Sidenav_Admin />
-        </div>
         <div id="home">
         <div className='notifications'>
             <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>

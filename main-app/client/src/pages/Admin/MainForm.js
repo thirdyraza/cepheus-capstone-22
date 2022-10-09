@@ -38,9 +38,6 @@ const MainForm=() =>{
 
     return(
     <div className="app">
-        <div id="side">
-          <Sidenav_Admin/>
-        </div>
         <div id="home">
         <div>
                 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>

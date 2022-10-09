@@ -6,9 +6,6 @@ import '../../assets/scss/user-management.scss';
 function UserManagement() {
     return (
         <div className="app">
-            <div id="side">
-                <Sidenav_Admin/>
-            </div>
             <div id="home">
                 <div class='container'>
                     <div class='title'>
