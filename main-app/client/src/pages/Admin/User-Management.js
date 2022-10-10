@@ -1,6 +1,5 @@
 import TableHead from '../TableHeading';
 import UserTable from '../TableContent';
-import Sidenav_Admin from '../Admin/Sidenav_Admin';
 import '../../assets/scss/user-management.scss';
 
 function UserManagement() {
@@ -18,9 +17,9 @@ function UserManagement() {
                     </div>
 
                     <div class='switches'>
-                        <a href='/home/requestor'>Requestors</a>
-                        <a href='/home/admins'>Admins</a>
-                        <a href='/home/archived'>Archived</a>
+                        <a href='/admin-home/requestor'>Requestors</a>
+                        <a href='/admin-home/admins'>Admins</a>
+                        <a href='/admin-home/archived'>Archived</a>
                     </div>
 
                     <div class='table-heading'>

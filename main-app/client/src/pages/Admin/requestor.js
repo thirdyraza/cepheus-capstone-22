@@ -1,7 +1,6 @@
 import TableHead from '../TableHeading';
 import UserTable from '../TableContent';
 import '../../assets/scss/user-management.scss';
-import Sidenav_Admin from '../Admin/Sidenav_Admin';
 
 function RequestorManagement() {
     return (

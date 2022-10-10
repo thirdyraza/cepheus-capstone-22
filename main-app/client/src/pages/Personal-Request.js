@@ -1,19 +1,16 @@
-import TableHead from '../TableHeading';
-import UserTable from '../TableContent';
-import '../../assets/scss/Table.scss';
+import TableHead from './TableHeading';
+import UserTable from './TableContent';
+import '../assets/scss/Table.scss';
 
 
-function ReqTable() {
+function PersonalReq() {
   return (        
 
     <div className="app">
     <div id="home">
     <div class='container'>
-  <div class='title'>
-      USER <div class='yellow'>REQUESTS</div>
-  </div>
-  <div class='switches'>
-      <a href='/admin-home/personal-req' id='requestlink'>Your Requests</a>
+  <div class='title' id='personal-req'>
+      YOUR <div class='yellow'>REQUESTS</div>
   </div>
   <div class='table-heading'>
       <TableHead/>
@@ -38,4 +35,4 @@ function ReqTable() {
   )
 }   
 
-export default ReqTable
+export default PersonalReq

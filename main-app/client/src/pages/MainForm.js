@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import SelectInput from "../SelectInput";
-import '../../assets/scss/MainForm.scss';
-import Sidenav_Admin from "../Admin/Sidenav_Admin";
+import SelectInput from "./SelectInput";
+import '../assets/scss/MainForm.scss';
 
 const MainForm=() =>{
 
@@ -43,12 +42,6 @@ const MainForm=() =>{
                 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
                 <div className="form-container">
                     <form>
-                        {/* <Link to='/home/admin'>
-                        <div id="btnBack" className="btnForm">
-                            <i class='bx bx-arrow-back' ></i>
-                            <p>Back</p>
-                        </div>
-                        </Link> */}
                         <h2>ACTIVITY VENUE RESERVATION FORM</h2>
                         <div className="note">
                             <h3 class="note_header">NOTE:</h3>

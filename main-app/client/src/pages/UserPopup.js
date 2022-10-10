@@ -21,10 +21,10 @@ const User_Popup = () => {
     const navigate = useNavigate()
 
     function User() {
-        navigate('/home/user')
+        navigate('/user-home/user')
     }
     function Admin() {
-        navigate('/home/admin')
+        navigate('/admin-home/admin')
     }
 
     return ( 
