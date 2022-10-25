@@ -1,5 +1,5 @@
-import '../assets/scss/Notifications.scss'
-import NotificationCard from './Notification-Card';
+import '../../assets/scss/Notifications.scss'
+import NotificationCard from '../User/Notification-Card';
 import React, { useState } from "react";
 
 const NotificationsPage = () => {

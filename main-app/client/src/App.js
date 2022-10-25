@@ -8,7 +8,7 @@ import Landing from './pages/Landing';
 import SettingPopup from './pages/SettingPopup';
 import DetailedNotifications from './pages/Detailed-Notification';
 import MainForm from './pages/MainForm';
-import NotificationsPage from './pages/Notifications';
+
 
 // Admin Pages
 import AdminMain from './pages/Admin/AdminMain';
@@ -20,10 +20,12 @@ import AdminsManagement from './pages/Admin/admins';
 import RequestorManagement from './pages/Admin/requestor';
 import ReqTable from './pages/Admin/user-req-table';
 import PersonalReq from './pages/Personal-Request';
+import UserNotifications from './pages/Admin/Notifications';
 
 // Requestor Pages
 import UserHome from './pages/User/Home-User';
 import UserMain from './pages/User/UserMain';
+import AdminNotifications from './pages/User/Notifications';
 
 
 
@@ -55,7 +57,7 @@ function App() {
                     <Route path='request-list' element={<ReqTable />}></Route>
                     <Route path='reserve' element={<MainForm />}></Route>
                     <Route path='request-details' element={ <DetailedNotifications /> }></Route>
-                    <Route path='notifications' element={ <NotificationsPage/> }></Route>  
+                    <Route path='notifications' element={ <AdminNotifications/> }></Route>  
                     <Route path='personal-req' element={ <PersonalReq/> }></Route>  
                     <Route path='register' element={ <Register /> }></Route>  
                   </Route>
@@ -66,7 +68,7 @@ function App() {
                     <Route path='reserve' element={<MainForm />}></Route>
                     <Route path='request-list' element={<ReqTable />}></Route>
                     <Route path='request-details' element={ <DetailedNotifications /> }></Route>
-                    <Route path='notifications' element={ <NotificationsPage/> }></Route>  
+                    <Route path='notifications' element={ <UserNotifications/> }></Route>  
                     <Route path='personal-req' element={ <PersonalReq/> }></Route>  
                   </Route>
             </Routes>

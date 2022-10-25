@@ -34,8 +34,9 @@
     font-weight: 600;
     border-radius: 30px;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr ;
     justify-content: space-between;
+    align-items: center;
     background-color: $color-white;
     color: $color-gray;
     box-shadow: 0 1px 20px rgba(0, 0, 0, 0.13);
@@ -49,7 +50,9 @@
     p{
         margin: 0 10px;
         font-size: 14px;
+        text-decoration: none;
     }
+
 }
 
 @media only screen and (max-width: 700px) {

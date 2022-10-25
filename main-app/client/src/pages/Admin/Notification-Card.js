@@ -27,7 +27,7 @@ const NotificationCard = (props) => {
                     <p>{select.date}</p>
                     <p>{select.time}</p>
                 </div>
-                <Link to="/home/request-details" className="btnDetails">
+                <Link to="/admin-home/request-details" className="btnDetails">
                     <button id="btnDetails">Details</button>
                 </Link>
             </div>

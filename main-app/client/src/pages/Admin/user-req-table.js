@@ -25,12 +25,9 @@ function ReqTable() {
       <UserTable/>
       <UserTable/>
       <UserTable/>
+      <UserTable/>
   </div>
-  <div class='buttons'>
-      <a>Dummy</a>
-      <a>Dummy</a>
-      <a>Dummy</a>
-  </div>
+
 </div>
     </div>
   </div>

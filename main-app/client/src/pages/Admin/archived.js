@@ -12,11 +12,15 @@ function Archived() {
                 ARCHIVED <div class='yellow'>MANAGEMENT</div>
             </div>
 
-            
-
             <div class='search'>
                 <input placeholder='Search By ID'></input>
                 <div class='search-icon'></div>
+            </div>
+
+            <div class='switches'>
+                <a href='/admin-home/requestor'>Requestors</a>
+                <a href='/admin-home/admins'>Admins</a>
+                <a href='/admin-home/archived'>Archived</a>
             </div>
 
             <div class='table-heading'>
