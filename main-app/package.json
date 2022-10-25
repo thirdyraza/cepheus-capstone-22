@@ -1,0 +1,31 @@
+{
+  "name": "main-app",
+  "version": "1.0.0",
+  "description": "cepheus working for usability test",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js"
+  },
+  "keywords": [
+    "capstone"
+  ],
+  "author": "team cephues",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.1.2",
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.5",
+    "react-router-dom": "^6.4.2",
+    "react-toastify": "^9.0.8"
+  },
+  "devDependencies": {
+    "concurrently": "^7.4.0",
+    "nodemon": "^2.0.20"
+  }
+}
